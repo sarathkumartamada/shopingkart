@@ -4,4 +4,9 @@
     <availableInTouch>false</availableInTouch>
     <confirmationTokenRequired>false</confirmationTokenRequired>
     <label>ApproveOpportunity</label>
+    <packageVersions>
+        <majorNumber>1</majorNumber>
+        <minorNumber>54</minorNumber>
+        <namespace>vs</namespace>
+    </packageVersions>
 </ApexPage>
