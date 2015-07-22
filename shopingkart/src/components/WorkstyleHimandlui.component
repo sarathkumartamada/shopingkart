@@ -1,0 +1,57 @@
+<apex:component >
+                                    <table border="0">
+                                        <tr>
+                                            
+                                            <td> 
+                                                <div align="center"> Casual </div> 
+                                                <style> div.backgroundwholeWSCasuals{background: url({!$Resource.WSCasuals}) ;background-size:cover;height:300px;width:300px;border: 1px solid black;background-repeat: no-repeat;}</style> 
+                                                <div class="backgroundwholeWSCasuals" onclick="myFunction2(this,'Casual','.WSCasuals')">
+                                                <div class="transbox" >
+                                                <input type="checkbox" style="display:none" checked="none"  name="brand" value="Tshirt/Polo"/>
+                                                <p><div  class='collapse WSCasuals'><apex:image url="{!$Resource.checkRed}" width="200"  height="200" style="margin:20px;" /></div></p>
+                                                </div>
+                                                </div> 
+                                                
+                                                
+                                            </td>
+                                            <td> 
+                                                <div align="center"> Formal</div>
+                                                <style> div.backgroundwholeWSFormal{background: url({!$Resource.WSFormal}) ;background-size:cover;height:300px;width:300px;border: 1px solid black;background-repeat: no-repeat;}</style> 
+                                                <div class="backgroundwholeWSFormal" onclick="myFunction2(this,'Suit','.WSFormal')">
+                                                <div class="transbox" >
+                                                <input type="checkbox" style="display:none" checked="none"  name="brand" value="Tshirt/Polo"/>
+                                                <p><div  class='collapse WSFormal'><apex:image url="{!$Resource.checkRed}" width="200"  height="200" style="margin:20px;" /></div></p>
+                                                </div>
+                                                </div> 
+                                               
+                                                
+                                            </td>
+                                            <td> 
+                                                <div align="center"> Business</div>
+                                                <style> div.backgroundwholeWSBusiness{background: url({!$Resource.WSBusiness}) ;background-size:cover;height:300px;width:300px;border: 1px solid black;background-repeat: no-repeat;}</style> 
+                                                <div class="backgroundwholeWSBusiness" onclick="myFunction2(this,'Business Casual','.WSBusiness')">
+                                                <div class="transbox" >
+                                                <input type="checkbox" style="display:none" checked="none"  name="brand" value="Tshirt/Polo"/>
+                                                <p><div  class='collapse WSBusiness'><apex:image url="{!$Resource.checkRed}" width="200"  height="200" style="margin:20px;" /></div></p>
+                                                </div>
+                                                </div> 
+                                                
+                                                
+                                            </td>
+                                            <td> 
+                                                <div align="center"> Trendy</div>
+                                                <style> div.backgroundwholeWSTrendy{background: url({!$Resource.WSTrendy}) ;background-size:cover;height:300px;width:300px;border: 1px solid black;background-repeat: no-repeat;}</style> 
+                                                <div class="backgroundwholeWSTrendy" onclick="myFunction2(this,'Uniform','.WSTrendy')">
+                                                <div class="transbox" >
+                                                <input type="checkbox" style="display:none" checked="none"  name="brand" value="Tshirt/Polo"/>
+                                                <p><div  class='collapse WSTrendy'><apex:image url="{!$Resource.checkRed}" width="200"  height="200" style="margin:20px;" /></div></p>
+                                                </div>
+                                                </div> 
+                                               
+                                                
+                                            </td>
+                                            
+                                            
+                                        </tr>
+                                    </table>
+</apex:component>

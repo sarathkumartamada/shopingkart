@@ -1,0 +1,262 @@
+<apex:page controller="outfit" standardStylesheets="false" sidebar="false" showHeader="false">
+
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+       <title>Creating a Simple Parallax Scrolling Website</title>
+       <link rel="stylesheet" href="css/style.css"/>
+       <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+       <link href='http://fonts.googleapis.com/css?family=Wellfleet' rel='stylesheet' type='text/css'/>
+       <link href='http://fonts.googleapis.com/css?family=Wellfleet' rel='stylesheet' type='text/css'/>
+       <link href='http://fonts.googleapis.com/css?family=Arvo:400,700,400italic,700italic' rel='stylesheet' type='text/css'/>
+       <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'/>
+       <link href='http://fonts.googleapis.com/css?family=Goudy+Bookletter+1911' rel='stylesheet' type='text/css'/>
+
+    <style>
+    body{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+ 
+h1 {
+    font-family:"Arno";
+    font-weight:normal;
+    font-size: 55px;
+    text-align: center;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+ 
+h2 {
+   font-family:"Arvo";
+   font-weight: normal;
+   font-size: 40px;
+   text-align: center;
+   color: #fff;
+   margin: 0;
+    padding: 0;
+}
+ 
+h3 {
+   font-family: Oswald;
+   font-weight: normal;
+   font-size: 16px;
+   text-align: center;
+   margin: 5px 0;
+    padding: 0;
+    z-index: 1;
+    position: relative;
+}
+
+.center { margin: 0 auto; }
+.content{ margin: 0 auto; width: 960px; }
+.clear { clear: both; }
+
+#header {
+    width: 100%;
+    background: url('http://www.hdwallpapersimages.com/wp-content/uploads/images/Child-Girl-with-Sunflowers-Images.jpg');
+    height: 80px;
+    position: fixed;
+    margin-top: 30px;
+}
+ 
+#nav { width: 410px; float: right; margin-top: 20px; }
+#logo a { color: #fff; text-decoration: none; float: left; font-size: 30px; margin-top: 20px; color: #fff; font-family:"Wellfleet"; font-weight: bold; }
+#nav ul{
+    list-style: none;
+    display: block;
+    margin: 0 auto;
+    list-style: none;
+}
+ 
+#nav li{
+    margin-top: 9px;
+    float: left;
+    padding-left: 21px;
+}
+ 
+#nav li a { color: #fff; opacity:0.6; font-size: 16px; text-decoration: none; font-family: 'Wellfleet'; }
+#nav li a.active { color: #fff; opacity:1; border-bottom: 2px solid #fff; }
+#nav li a:hover { color: #fff; opacity:1;  }
+
+.quotes {
+ font-family: 'Goudy Bookletter 1911', serif;
+   font-weight: normal;
+   font-size: 30px;
+  text-align: left;
+  margin: 50px auto;
+}
+ 
+ .author_name_white { font-family:"Wellfleet";  margin: 70px 0 0 75px; color: #fff; font-size: 20px; }
+ .author_name_gray { font-family:"Wellfleet";  margin: 70px 0 0 75px; color: #94a4a4; font-size: 20px; }
+ .quotes_container { width: 800px; margin: 0 auto; }
+#christmas_tree { background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYWK091YW06jkSs5mNZh5CRQycBfIr2rOfU268a4wZ8E_HXpQFmg')no-repeat; width: 48px; height: 77px; margin: 0 auto; position: relative; bottom: -35px;}
+#divider { background: url('https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQHWmuYKIh7r1xQ0izEeW3moeSEdMS5dZAJMf_cNnRkpJBII86riQ')no-repeat; width: 300px; height: 35px; margin: 0px auto 27px auto; }
+#ribbon { background: url('../img/ribbon.png')no-repeat; width: 251px; height: 48px; margin: 0 auto;  display: block; position: relative; top: -38px; }
+#snowflakes1 { background: url('../img/snowflakes.png')no-repeat; width: 24px; height: 21px; margin: 0 auto;  display: block; position: relative; bottom: -54px; left: -102px; }
+#snowflakes2 { background: url('../img/snowflakes.png')no-repeat; width: 24px; height: 21px; margin: 0 auto;  display: block; position: relative; bottom: -33px;  right: -100px; }
+
+
+
+#slide1, #slide2{ width: 100%; }
+#slide1{
+    background:url('http://www.gettyimages.in/gi-resources/images/Homepage/Category-Creative/UK/UK_Creative_462809583.jpg') 50% 0 no-repeat fixed;
+    color: #fff;
+    height: 600px;
+    margin: 0;
+    padding: 200px 0 260px 0;
+    background-size: cover;
+}
+ 
+#slide2{
+    background-color: #fff;
+    color: #333333;
+    height: 300px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 200px 0;
+}
+ 
+#slide3{
+    background: url('http://clarklabs.org/images/carousel-image-6.jpg') 50% 0 no-repeat fixed;
+    color: #fff;
+    height: 600px;
+    padding: 170px 0 0 0;
+    background-size: cover;
+}
+ 
+#slide4{
+    background-color: #fff;
+    color: #333333;
+    height: 300px;
+    padding: 200px 0;
+}
+ 
+#slide5{
+    background: url('http://www.himandlui.com/wp-content/uploads/2015/01/clothing-subscription-for-men.jpg') 50% 0 no-repeat fixed;
+    height: 200px;
+    margin: 0 auto;
+    padding: 250px 0;
+    color: #fff;
+    background-size: cover;
+}
+
+#copyright  { color: #fff; font-family:"Wellfleet";  font-size: 14px; margin-top: 100px; text-align: center;  }
+#copyright  a { text-decoration: none; color: #fff;  }
+    </style>
+    
+    <script>
+    $(document).ready(function() {
+    $('a[href*=#]').each(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+    && location.hostname == this.hostname
+    && this.hash.replace(/#/,'') ) {
+    var $targetId = $(this.hash), $targetAnchor = $('[name=' + this.hash.slice(1) +']');
+    var $target = $targetId.length ? $targetId : $targetAnchor.length ? $targetAnchor : false;
+    if ($target) {
+    var targetOffset = $target.offset().top;
+    $(this).click(function() {
+                $("#nav li a").removeClass("active");
+                $(this).addClass('active');
+    $('html, body').animate({scrollTop: targetOffset}, 1000);
+    return false;
+    });
+    }
+    }
+    });
+     
+    });
+    
+    $(this).click(function() {
+            $("#nav li a").removeClass("active");
+            $(this).addClass('active');
+           $('html, body').animate({scrollTop: targetOffset}, 1000);
+           return false;
+         });
+      }
+    }
+  });
+});
+
+$('html, body').animate({scrollTop: targetOffset}, 1000);
+
+
+$(document).ready(function() {
+  $('a[href*=#]').each(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+    && location.hostname == this.hostname
+    && this.hash.replace(/#/,'') ) {
+ var $targetId = $(this.hash), $targetAnchor = $('[name=' + this.hash.slice(1) +']');
+ var $target = $targetId.length ? $targetId : $targetAnchor.length ? $targetAnchor : false;
+       if ($target) {
+ var targetOffset = $target.offset().top;
+    </script>
+    <body>
+    <header id="header">
+    <div>
+<div id="logo"><a href=""> PARALLAX </a></div>
+ 
+<nav id="nav">
+    <ul>
+    <li><a href="#slide1" title="Next Section" >Slide 1</a></li>
+    <li><a href="#slide2" title="Next Section">Slide 2</a></li>
+    <li><a href="#slide3" title="Next Section">Slide 3</a></li>
+    <li><a  href="#slide4" title="Next Section">Slide 4</a></li>
+    <li><a href="#slide5" title="Next Section">Slide 5</a></li>
+    </ul>
+</nav>
+</div>
+</header>
+   <div id="slide1">
+        <div>
+            <div id="christmas_tree"> </div>
+            <div id="snowflakes1"></div>
+            <div id="snowflakes2"></div>
+            <h2>MERRY</h2>
+            <h1>CHRISTMAS</h1>
+            <div id="divider"> </div>
+             <h3>HAPPY NEW YEAR </h3>
+           <div id="ribbon"></div>
+           <div id="new_year"> </div>
+        </div>
+    </div>
+ 
+    <div id="slide2">
+        <div >
+            <div>
+            <h3>“Then the Grinch thought of something he hadn't before! What if Christmas, he thought, doesn't come from a store. What if Christmas...perhaps...means a little bit more!”</h3>
+          <img src="data:image/jpeg;base64,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" align="left"/> <h4>Dr. Seuss </h4>
+        </div>
+        </div>
+    </div>
+ 
+   <div id="slide3">
+        <div>
+               <div>
+               <h3>“I truly believe that if we keep telling the Christmas story, singing the Christmas songs, and living the Christmas spirit, we can bring joy and happiness and peace to this world.”  </h3>
+              <img src="img/norman.png" align="left"/> <h4>Norman Vincent Peale </h4>
+            </div>
+        </div>
+    </div>
+ 
+    <div id="slide4">
+        <div>
+              <div>
+            <h3>“Christmas doesn't come from a store, maybe Christmas perhaps means a little bit more....” </h3>
+          <img src="img/dr-seuss.png" align="left"/> <h4>Dr. Seuss </h4>
+        </div>
+        </div>
+    </div>
+ 
+    <div id="slide5">
+        <div>
+           <div>
+            <h3>“My idea of Christmas, whether old-fashioned or modern, is very simple: loving others. Come to think of it, why do we have to wait for Christmas to do that?” </h3>
+            <img src="img/bob.png" align="left"/> <h4>Bob Hope </h4>
+          </div>
+        <div id="copyright"><a href="http://www.1stwebdesigner.com/">Copyright 1stwebdesigner.com </a></div>
+        </div>
+ 
+    </div>
+        </body>
+</apex:page>

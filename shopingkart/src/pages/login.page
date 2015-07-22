@@ -1,0 +1,132 @@
+<apex:page Controller="accountForm" showHeader="false" sidebar="false">
+<script src="https://apis.google.com/js/platform.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<apex:stylesheet value="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
+<meta name="google-signin-client_id" content="15051979377-43icfn4a73ama8g9uvjgjb05htag6qq9.apps.googleusercontent.com"/>
+<script>
+function onSignIn(googleUser) {
+  var profile = googleUser.getBasicProfile();
+  
+
+
+        var inputs = document.getElementsByTagName('input');
+        for(var x = 0; x < inputs.length; x++) 
+        {
+        if(inputs[x].id.indexOf('guname') >= 0) { inputs[x].value =profile.getEmail();}
+        if(inputs[x].id.indexOf('gpassword') >= 0) { inputs[x].value = profile.getId(); }
+        if(inputs[x].id.indexOf('gname') >= 0) { inputs[x].value = profile.getName(); }
+        }
+       
+      gsave();
+       
+}
+</script>
+
+
+
+    
+   
+     <c:importvisualstrap />
+    <c:visualstrapblock >
+    <apex:form id="myForm">
+        <c:navbar brand="himandlui"  inverse="false" type="fixed-top">  
+        
+        <b>     Your Account  </b>
+                        
+                        <a class="btn btn-success btn-md" onclick="$('#Signup').modal('show');return false;">Sign Up</a> 
+                        <a class="btn btn-success btn-md" onclick="$('#Login').modal('show');return false;">Login</a>
+                        
+        </c:navbar> 
+        
+    
+       <c:navbar brand="Balakrishna" inverse="false" type="fixed-bottom" layout="none">  
+         <center>  
+           <apex:outputPanel styleClass="text-muted" style="margin:20px;font-size:130%" layout="block">  
+             <c:glyph icon="bullhorn"/> Site powered by Balu 
+           </apex:outputPanel>  
+         </center>  
+       </c:navbar>  
+           
+            <c:modal style="opacity:.9" id="Signup" title="SignUp">
+                <apex:outputPanel layout="block" id="newCasePanel">   
+                    <apex:pageBlock mode="maindetail">
+                    <apex:actionRegion >
+                        <apex:pageBlockSection >  
+                        
+                       
+                            <apex:inputtext label="Name" id="gname" value="{!Name}" />
+                            <apex:inputSecret label="Password" id="gpassword" value="{!Password}"/>
+                            <apex:inputtext label="Phone" id="phone" value="{!Phone}"/>
+                            <apex:inputtext label="Email" id="guname" value="{!Email}"/>
+                            
+                            <apex:actionFunction name="gsave" action="{!gsave}" />
+                        </apex:pageBlockSection>
+                   </apex:actionRegion>     
+                    </apex:pageBlock>
+                    <apex:outputPanel layout="block" styleClass="modal-footer">
+                        
+                         <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                    
+                        <apex:commandButton value="Cancel" styleClass="btn-warning" html-data-dismiss="modal"/>
+                        
+                        <apex:commandButton value="Save" styleClass="btn-success"  action="{!save}" />
+                    </apex:outputPanel>
+                <apex:outputPanel >
+                        <script>
+                            $('#Signup').modal('hide');
+                        </script>
+                    </apex:outputPanel>
+                </apex:outputPanel>
+            </c:modal>
+            <c:modal id="Login" title="Login">
+                <apex:outputPanel layout="block" id="newCasePanel2">   
+                    <apex:pageBlock mode="maindetail">
+                        <apex:pageBlockSection >
+                        <apex:inputText label="Email" value="{!VFEmail}" />
+                         <apex:inputsecret label="Password" value="{!VFPassword}"/>
+                            <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                            <apex:pageMessages ></apex:pageMessages>
+                         </apex:pageBlockSection>
+                    </apex:pageBlock>
+                    <apex:outputPanel layout="block" styleClass="modal-footer">
+                        <apex:commandButton value="Cancel" styleClass="btn-warning" html-data-dismiss="modal"/>
+                        <apex:commandButton value="Submit" styleClass="btn-success" action="{!verifyAccount}"/>
+                    </apex:outputPanel>
+                    <apex:outputPanel >
+                        <script>
+                            $('#Login').modal('hide');
+                        </script>
+                    </apex:outputPanel>
+                </apex:outputPanel>
+             </c:modal>
+             </apex:form>
+        </c:visualstrapblock>
+                  
+           
+            <div>
+                   <table border="0">
+
+
+
+                         <tr><apex:pageMessages ></apex:pageMessages>
+                             <td>   <apex:image url="{!$Resource.Box}" >
+                               <div style="color: #00000; text-align:center;">
+                                 
+                                <div style="color: #00000; text-align:center;"><h3>Your personal stylist will help you build your wardrobe </h3><br><h3> online or in person.</h3></br> <br> <h3>Leaving you time for everything else.</h3></br>
+                                </div>
+                                 
+                                <h3 class="ls-l" style="top:188px;left:949px;white-space: nowrap;"/>
+                                <div style="color: #00000; text-align:center;">The no effort wardrobe <br> for men</br><div>
+                                 
+                                </div> </div>  
+                              </div>
+                              </apex:image>
+                             </td> 
+                         </tr>      
+                    </table>
+             </div>
+
+            
+
+
+</apex:page>

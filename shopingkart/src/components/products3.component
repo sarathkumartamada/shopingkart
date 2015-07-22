@@ -1,0 +1,202 @@
+<apex:component controller="accountForm" allowDML="true">
+
+<apex:attribute name="Accountid" description="Account id for products" assignTo="{!myaccountid}" type="id" required="true"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<apex:stylesheet value="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
+<style>
+img.test {
+    width: 100%;
+    height: auto;
+    max-width: 180px
+}
+#img_container {
+    position:relative;
+    display:inline-block;
+    text-align:center;
+    
+}
+
+.btn{
+    position:absolute;
+    bottom:10px;
+    right:10px;
+    width:100px;
+    height:30px;
+}
+.carousel .carousel-control { visibility: hidden; }
+.carousel:hover .carousel-control { visibility: visible; }
+.mystyle{
+height:300px;
+width:300px;
+}
+</style>
+
+<script>
+
+  var count=0;
+  var myids=[];
+  
+            function onclickbutton(ele,value,id)
+            {
+            if(value=='Remove')
+            {
+             ele.value = "Add to Cart";
+             count--;
+             var indes=myids.indexOf(id);
+             
+             if (indes> -1) {
+               myids.splice(indes, 1);
+             }
+                         }
+                else {
+                ele.value = "Remove";
+                count++;
+               myids.push(id);
+                }
+                if(count==0)
+                document.getElementById("badgeid").innerHTML = '';
+                else
+                document.getElementById("badgeid").innerHTML = count;
+            
+                
+            }
+      function fillmyProductids(){
+      var inputs = document.getElementsByTagName('input');
+     
+        for(var x = 0; x < inputs.length; x++) 
+        {
+        if(inputs[x].id.indexOf('myproducts') >= 0) { inputs[x].value =myids;}
+        
+        }
+        
+      mycart();
+      }
+
+
+
+</script>
+
+
+<apex:form >    
+<c:sidebar3 >
+    <!--    <c:navbar brand="himandlui"  inverse="false" type="fixed-top">  
+            
+            <b> </b>
+
+
+            <a class="btn btn-success btn-md"  href="/apex/login">Logout</a><b> </b>
+            </c:navbar> -->
+           
+            <apex:actionFunction name="Search" action="{!Search}" reRender="grid"/>
+           <script>
+            function Searchmyproduct(myid)
+            {
+            searchtxt=document.getElementById('{!$Component.searchtxt}');
+            searchtxt.value=myid;
+            Search();
+            }
+            function searchbyfamily(family)
+            {
+            
+            findfamily=document.getElementById('{!$Component.findfamily}');
+            findfamily.value=family;
+            
+              Search();          
+            }
+            </script>
+            <apex:inputHidden id="searchtxt" value="{!searchtxt}"/>
+            <apex:inputHidden id="findfamily" value="{!findfamily}"/>
+            
+        
+    <apex:outputPanel id="grid">
+    <apex:pageBlock id="grid1">
+    
+   <!-- <apex:inputHidden id="myproducts" value="{!produstids}"></apex:inputHidden>-->
+            <apex:repeat value="{!product}" var="pr">
+                    <div id="img_container">
+                                  <div id="carousel-example-generic{!pr}" class="carousel slide" data-ride="carousel"  data-interval="false">
+                                      <!-- Indicators -->
+                                      <ol class="carousel-indicators">
+                                             
+                                      <li data-target="#carousel-example-generic{!pr}" data-slide-to="0" class="active"></li>
+                                        <apex:variable value="{!1}" var="count"/>    
+                                        
+                                        <apex:repeat value="{!pr.Attachments}" var="photo">
+                                        
+                                        <apex:variable value="{!count+1}" var="count"/>
+                                        </apex:repeat>
+                                        
+                                          <apex:variable value="{!count-2}" var="count"/>
+                                          <apex:variable value="{!count-1}" var="count3"/>
+                                        <apex:repeat value="{!count3}" var="count2">
+                                        <li data-target="#carousel-example-generic{!pr}" data-slide-to="{!count2}"></li>
+                                        <apex:variable value="{!count+1}" var="count2"/>
+                                        </apex:repeat>
+                                      </ol>
+                                    
+                                      <!-- Wrapper for slides -->
+                                     <apex:variable value="{!count}" var="count"/>
+                                     <div class="carousel-inner" role="listbox">
+                                       <div class="item active mystyle">
+                                        <apex:variable value="{!pr.Attachments[0]}" var="image"/>
+                                           <apex:image url="{!URLFOR($Action.Attachment.Download,image)}" width="300px" height="300px" />
+             
+                                          <div class="carousel-caption">
+                                            ...
+                                          </div>
+                                        </div>
+                                         <apex:repeat value="{!count}" var="cnt">
+                                        <div class="item mystyle" id="mystyle">
+                                        <apex:variable value="{!pr.Attachments[cnt]}" var="photo"/>
+                                           <apex:image url="{!URLFOR($Action.Attachment.Download, photo)}" width="300px" height="300px" />
+                                          <div class="carousel-caption">
+                                            ...
+                                          </div>
+                                        </div>
+                                        <apex:variable value="{!count-1}" var="cnt"/>
+                                        </apex:repeat>
+                                      </div>
+                                     
+                              <!-- Controls -->
+                              <a class="left carousel-control" href="#carousel-example-generic{!pr}" role="button" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                              </a>
+                              <a class="right carousel-control" href="#carousel-example-generic{!pr}" role="button" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                              </a>
+                            </div>
+                      <br></br>
+            <div class="btn-group" role="group" aria-label="..."> 
+            
+            <input  id="popover" data-trigger="hover" href="#" title="Price" data-toggle="popover"  data-content="{!pr.PricebookEntries[0].UnitPrice}" type="button" Class="btn btn-info" onclick="onclickbutton(this,this.value,'{!pr.id}');" value="Add to Cart"></input>
+           <!-- <input type="button" Class="btn btn-info collapse {!pr}RemoveFromCart RemoveFromCart" onclick="myselectfunction(this,'.{!pr}addtoCart','.{!pr}RemoveFromCart','Remove','{!pr}')" value="Remove "></input>-->
+           
+            <apex:commandLink styleClass="btn btn-info" onclick="                    $('.outfit').collapse('hide');
+                                                                                    $('.style').collapse('hide');
+                                                                                    $('.profile').collapse('hide');
+                                                                                    $('.home').collapse('hide');
+                                                                                    $('.mycart').collapse('show');"   value="Buy" reRender="cartoutputpannel">
+            <apex:param name="id" assignTo="{!myprid}"  value="{!pr.id}"/>
+            </apex:commandLink>
+            </div> 
+            </div>
+            </apex:repeat>
+     </apex:pageBlock>   
+     </apex:outputPanel> 
+     <script>
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover();   
+});
+</script>
+   </c:sidebar3>  
+    <!------------------------>
+
+    <!------------------------->
+    
+</apex:form> 
+</apex:component>

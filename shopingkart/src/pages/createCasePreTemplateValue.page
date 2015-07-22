@@ -1,0 +1,74 @@
+<apex:page standardController="CaseTemplate__c" recordSetVar="templates" sidebar="true">
+    <!--
+    <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/plug-ins/1.10.7/integration/jqueryui/dataTables.jqueryui.css"/>-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/plug-ins/1.10.7/integration/jqueryui/dataTables.jqueryui.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+         $('#example').dataTable({
+        
+        "lengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]]
+        
+      } );   
+      
+  
+    } );
+    
+    
+
+     document.getElementById('example').style.backgroundColor='#003F87';
+    </script>
+
+    
+    <vs:importvisualstrap theme="default" />
+    <c:visualstrapblock >
+    <apex:form styleClass="success">
+        <apex:pageBlock >
+            <apex:pageBlockButtons location="top">
+                <apex:outputLink styleClass="btn btn-info btn-md" value="/a05/e?">New Template</apex:outputLink>
+            </apex:pageBlockButtons>
+            
+            <table id="example"  class="table" cellspacing="0" width="100%">
+                
+                <thead>
+                    <tr>
+                       <th>Actions</th>
+                        <th>Templete Name</th>
+                        <th>Subject</th>
+                        <th>Case Origin</th>
+                        <th>Status</th>
+                        <th>Type</th>
+                        <th>Created By</th>
+                    </tr>
+                </thead>
+                <tbody class="success">
+                    
+                    <apex:repeat value="{!templates}" var="template" >
+                        <tr>
+                            
+                            <td><apex:outputLink styleClass="btn btn-warning btn-md"  value="/{!template.id}/e?">EDIT</apex:outputLink>
+                                &nbsp;|&nbsp;
+                                <apex:outputLink styleClass="btn btn-danger btn-md" value="/{!template.id}/e?">Delete</apex:outputLink>
+                            </td>    
+                            <td>
+                                <apex:outputLink styleClass="btn btn-success btn-md" value="/500/e?{!$Setup.CaseIds__c.Status__c}={!template.Status__c}&retURL=apex/caseCreationTemplate&saveURL=apex/caseCreationTemplate">{!template.name}</apex:outputLink>
+                            </td>
+                            <td>{!template.Subject__c}</td>
+                            <td>{!template.Origin__c}</td>
+                            <td>{!template.Status__c}</td>
+                            <td><font size="2" color="">{!template.Type__c}</font></td>
+                            <td>{!template.CreatedBy.Name}</td>                          
+                        </tr>
+                        
+                   </apex:repeat>
+                        
+                </tbody>
+                <tfooter>
+                </tfooter>
+            </table>
+        </apex:pageBlock>
+    </apex:form>
+    </c:visualstrapblock>
+</apex:page>

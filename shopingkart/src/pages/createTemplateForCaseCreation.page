@@ -1,0 +1,37 @@
+<apex:page standardController="CaseTemplate__c"  recordSetVar="CaseTemplates"><!--
+<apex:form >
+<apex:pageBlock >
+<apex:pageBlockSection >
+<div  align="center">
+<apex:commandButton value="New Template" action="{!CreateNewTemplate}"/></div></apex:pageBlockSection>
+<apex:pageBlockTable value="{!Templates}" var="Temp" >
+
+            
+              <apex:column headerValue="Template Name"> 
+              <apex:commandButton action="{!create}" value="{!Temp.Name}" id="cmdSort">
+              <apex:param value="{!Temp.id}" name="column" assignTo="{!Myid}" ></apex:param>
+              </apex:commandButton>
+              </apex:column>
+              <apex:column value="{!Temp.Type__c}"/>
+              <apex:column value="{!Temp.Status__c}"/>
+              <apex:column value="{!Temp.CreatedById}"/>
+              
+              
+              
+            <apex:panelGrid columns="7" id="grid">
+            <apex:commandButton value="|<<" action="{!Templates.first}" disabled="{!!Templates.hasPrevious}" title="First page"/>
+            <apex:commandButton value="<" action="{!Templates.previous}" disabled="{!!Templates.hasPrevious}" title="Previous page"/>
+            <apex:commandButton value=">" action="{!Templates.next}" disabled="{!!Templates.hasNext}" title="Next page"/>
+            <apex:commandButton value=">>|" action="{!Templates.last}" disabled="{!!Templates.hasNext}" title="Last page"/>
+           
+             <apex:outputText >{!(setCon.pageNumber * size)}  of {!noOfRecords}</apex:outputText>
+
+             
+            </apex:panelGrid>   
+
+</apex:pageBlockTable>
+
+
+</apex:pageBlock>
+</apex:form>-->
+</apex:page>

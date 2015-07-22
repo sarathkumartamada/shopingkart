@@ -1,0 +1,133 @@
+<apex:page standardStylesheets="false">
+{!$Currentpage.parameters.id}
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <apex:stylesheet value="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
+<style>
+    div.background
+    {
+      background: url({!$Resource.wholeOutfit}) ;
+      height:100%;
+      width:100%;
+      border: 2px solid black;
+    }
+    div.transbox
+    {
+      margin: 30px;
+      background-color: #ffffff;
+      border: 1px solid black;
+      opacity:0.6;
+      filter:alpha(opacity=60); /* For IE8 and earlier */
+    }
+    div.transbox p
+    {
+
+      margin: 5%;
+      font-weight: bold;
+      color: #000000;
+    }
+    </style>
+    <script>
+ window.onload=function(){
+        $(".collapse").collapse('hide');
+        };
+    
+
+        function fillBrList(ele)
+        {
+        alert('hello');
+
+        $(".collapse").collapse('show');
+        alert('hai');
+        }
+    </script>
+
+<apex:form >
+    <apex:pageBlock >
+                                    <table border="0">
+                                        
+                                        
+                                        
+                                        
+                                        <tr>
+                                            
+                                            <td> 
+                                                <div align="center" > wholeOutfit </div> 
+                                                    <td>
+                                                    <div class="background">
+                                                    <div class="transbox" onclick="fillBrList(this,'wholeOutfit')">
+                                                    <input type="checkbox" style="display:none" checked="none"  name="brand" value="Boss"/>
+                                                    <p><div  class='collapse abc'><apex:image url="{!$Resource.checkRed}" width="200"  height="200" style="margin:20px;" /></div></p>
+                                                    </div>
+                                                    </div>
+                                                    </td>  
+                                               <div>
+                                                <apex:image url="{!$Resource.wholeOutfit}" width="300"  height="300" style="margin:20px;" id="wholeOutfit"  onclick="fillBrList(this)"/>
+                                               </div>
+                                                
+                                               
+                                            </td>
+                                            <td> 
+                                                <div align="center"> sweater </div>
+                                                
+                                                <apex:image url="{!$Resource.sweater}" width="300" height="300" style="margin:20px;" id="sweater" onclick="myFunction(this,'sweater')"/> 
+                                                
+                                            </td>
+                                            <td> 
+                                                <div align="center"> shirt </div>
+                                                
+                                                <apex:image url="{!$Resource.shirt}" width="300" height="300" style="margin:20px;" id="shirt" onclick="myFunction(this,'shirt')"/>   
+                                                
+                                            </td>
+                                            <td> 
+                                                <div align="center"> Tie </div>
+                                                
+                                                
+                                                <apex:image url="{!$Resource.Tie}" width="300" height="300" style="margin:20px;" id="Tie" onclick="myFunction(this,'Tie')"/>  
+                                                
+                                            </td>
+                                            
+                                            <td> 
+                                                <div align="center"> scarves </div> 
+                                                
+                                                <apex:image url="{!$Resource.scarves}" width="300"  height="300" style="margin:20px;" id="scarves" onclick="myFunction(this,'scarves')"/> 
+                                                
+                                            </td>
+                                        </tr>
+                                        <tr>                                                        
+                                            <td> 
+                                                <div align="center"> Wallet </div>
+                                                
+                                                <apex:image url="{!$Resource.Wallet}" width="300" height="300" style="margin:20px;" id="Wallet" onclick="myFunction(this,'Wallet')"/> 
+                                                
+                                            </td>
+                                            <td> 
+                                                <div align="center"> belt</div>
+                                                
+                                                <apex:image url="{!$Resource.belt}" width="300" height="300" style="margin:20px;" id="belt" onclick="myFunction(this,'belt')"/>   
+                                                
+                                            </td>
+                                            <td> 
+                                                <div align="center"> shoes </div>
+                                                
+                                                <apex:image url="{!$Resource.shoes}" width="300" height="300" style="margin:20px;" id="shoes" onclick="myFunction(this,'shoes')"/>  
+                                                
+                                            </td>
+                                            
+                                            <td> 
+                                                <div align="center"> Trouser </div>
+                                                
+                                                <apex:image url="{!$Resource.Trouser}" width="300" height="300" style="margin:20px;" id="Trouser" onclick="myFunction(this,'Trouser')"/>  
+                                                
+                                            </td>
+                                            <td> 
+                                                <div align="center"> Jacket </div>
+                                                
+                                                <apex:image url="{!$Resource.Jacket}" width="300" height="300" style="margin:20px;" id="Jacket" onclick="myFunction(this,'Jacket')"/>  
+                                                
+                                            </td>
+                                            
+                                        </tr>
+                                    </table>
+                                </apex:pageBlock> <br/>
+</apex:form>
+</apex:page>

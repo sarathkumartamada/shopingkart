@@ -1,0 +1,40 @@
+<apex:page standardController="Opportunity" recordSetVar="Opportunities" extensions="OpportunityExcelController"  >
+<apex:pageBlock >
+<apex:pageBlockTable value="{!Opportunities}" var="Opp">
+<apex:column value="{!Opp.Name}"/>
+<apex:column value="{!Opp.Name}"/>
+<apex:column value="{!Opp.IsClosed}"/>
+<apex:column value="{!Opp.IsWon}"/>
+<apex:column value="{!Opp.LeadSource}"/>
+<apex:column value="{!Opp.CreatedDate}"/>
+<apex:column value="{!Opp.CreatedById}"/>
+<apex:column value="{!Opp.CampaignId}"/>
+<apex:column value="{!Opp.Amount}"/>
+<apex:column value="{!Opp.AccountId}"/>
+<apex:column value="{!Opp.CloseDate}"/>
+<apex:column value="{!Opp.HasOpportunityLineItem}"/>
+<apex:column value="{!Opp.ForecastCategoryName}"/>
+<apex:column value="{!Opp.FiscalYear}"/>
+<apex:column value="{!Opp.ForecastCategory}"/>
+<apex:column value="{!Opp.LastActivityDate}"/>
+<apex:column value="{!Opp.LastModifiedDate}"/>
+<apex:column value="{!Opp.LastModifiedById}"/>
+<apex:column value="{!Opp.LastReferencedDate}"/>
+<apex:column value="{!Opp.LastViewedDate}"/>
+<apex:column value="{!Opp.NextStep}"/>
+<apex:column value="{!Opp.OwnerId}"/>
+<apex:column value="{!Opp.Pricebook2Id}"/>
+<apex:column value="{!Opp.Probability}"/>
+<apex:column value="{!Opp.StageName}"/>
+<apex:column value="{!Opp.TotalOpportunityQuantity}"/>
+<apex:column value="{!Opp.Type}"/>
+<apex:column value="{!Opp.IsPrivate}"/>
+<apex:column value="{!Opp.FiscalQuarter}"/>
+<apex:column value="{!Opp.ExpectedRevenue}"/>
+<apex:column value="{!Opp.Description}"/>
+<apex:column value="{!Opp.Fiscal}"/>
+<apex:column value="{!Opp.DeliveryInstallationStatus__c}"/>
+<apex:column value="{!Opp.CurrentGenerators__c}"/>
+</apex:pageBlockTable>
+</apex:pageBlock>
+</apex:page>

@@ -1,0 +1,28 @@
+<apex:page controller="contractListController" showHeader="false" sidebar="false">
+<script>
+function close_window() {
+  if (confirm("Close Window?")) {
+    window.top.close();
+  }
+}
+</script>
+<apex:form title="Shipment">
+
+<apex:pageMessages />
+<apex:pageBlock title="New Record">
+    <apex:pageBlockSection >
+    <apex:inputtext value="{!ship.name}" required="true"/>
+    <apex:outputField value="{!ship.Project__c}"/>
+    <apex:outputField value="{!ship.Contract__c}"/>
+    <apex:outputField value="{!ship.Type__c}"/>
+    <apex:inputField value="{!ship.startDate__c}"/>
+    <apex:inputField value="{!ship.endDate__c}"/>
+    <apex:inputField value="{!ship.Billing_Address__c}"/>
+    </apex:pageBlockSection>
+    
+    <apex:commandButton action="{!save}" value="save"/>
+    <apex:commandButton value="cancle" onclick="close_window();return false" immediate="true"/>
+    
+</apex:pageBlock>
+</apex:form>
+</apex:page>

@@ -1,0 +1,3 @@
+Hello {!User.Username}, 
+{!Opportunity.Name} has been closed won. For more details please click here . 
+<a href="https://ap2.salesforce.com/{!Opportunity.Id}">View In Salesforce</a>

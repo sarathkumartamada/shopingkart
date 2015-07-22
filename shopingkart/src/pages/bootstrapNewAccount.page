@@ -1,0 +1,125 @@
+<apex:page standardController="Account" standardStylesheets="false" sidebar="false"  showHeader="false">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<apex:stylesheet value="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Brand</a>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+<apex:form >
+<div class="container-fluid">
+  <div class="text-center">
+    <h1>Bootstrap forms</h1>
+    <p class="lead">Enter Your Account Details
+    </p>
+  </div>
+  <apex:pageBlock >
+  <form class="form-horizontal" role="form">
+    <div class="row">
+      <div class="col-sm-6 col-lg-4">
+        <div class="form-group">
+          <label for="inputEmail" class="col-md-4 control-label">NAME:</label>
+          <div class="col-md-8">
+            <apex:inputField styleClass="form-control" id="inputName" value="{!Account.name}"/>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="form-group">
+          <label for="inputPassword" class="col-md-4 control-label">Type:</label>
+          <div class="col-md-8">
+            <apex:inputText styleClass="form-control" id="inputType" value="{!Account.Type}"/>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="form-group">
+          <label for="inputLabel3" class="col-md-4 control-label">Industry:</label>
+          <div class="col-md-8">
+            <apex:inputText styleClass="form-control" id="inputIndustry" value="{!Account.Industry}"/>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="form-group">
+          <label for="inputLabel4" class="col-md-4 control-label">ParentId:</label>
+          <div class="col-md-8">
+            <apex:inputText styleClass="form-control" id="inputParentId" value="{!Account.ParentId}"/>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="form-group">
+          <label for="input5" class="col-md-4 control-label">Website</label>
+          <div class="col-md-8">
+            <apex:inputText styleClass="form-control" id="inputWebsite" value="{!Account.Website}"/>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="form-group">
+          <label for="input6" class="col-md-4 control-label">BillingCity</label>
+          <div class="col-md-8">
+            <apex:inputText styleClass="form-control" id="inputBillingCity" value="{!Account.BillingCity}"/>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="form-group">
+          <label for="input7" class="col-md-4 control-label">BillingStreet:</label>
+          <div class="col-md-8">
+            <apex:inputText styleClass="form-control" id="inputBillingStreet" value="{!Account.BillingStreet}"/>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="form-group">
+          <label for="input8" class="col-md-4 control-label">BillingState:</label>
+          <div class="col-md-8">
+           <apex:inputText styleClass="form-control" id="inputBillingCountry" value="{!Account.BillingCountry}"/>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="form-group">
+          <label for="input9" class="col-md-4 control-label">ShippingCity:</label>
+          <div class="col-md-8">
+            <apex:inputText styleClass="form-control" id="inputShippingCity" value="{!Account.ShippingCity}"/>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="form-group">
+          <label for="input10" class="col-md-4 control-label">ShippingCountry:</label>
+          <div class="col-md-8">
+            <apex:inputText styleClass="form-control" id="inputShippingCountry" value="{!Account.ShippingCountry}"/>
+          </div>
+        </div>
+      </div>
+    </div><!-- /.row this actually does not appear to be needed with the form-horizontal -->
+  </form>
+  <p>Note: label text will occupy as much space as the text takes regardless of the 
+      column size, so be sure to validate your spacing.
+  </p>
+  </apex:pageBlock>
+</div>
+<apex:commandButton value="save" action="{!save}"/>
+
+</apex:form>
+</apex:page>

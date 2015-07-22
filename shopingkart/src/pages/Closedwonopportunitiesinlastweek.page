@@ -1,0 +1,18 @@
+<apex:page >
+<!--<apex:form >
+<apex:pageBlock >
+       
+        <apex:pageBlockTable value="{!Opportunities}" var="c">     
+            <apex:column headerValue="Opportunity Name">
+            <apex:commandLink value="{!c.name}" action="{!referPage}" target="_blank">
+          
+            </apex:commandLink>
+       
+            </apex:column>
+           
+            <apex:column value="{!c.id}"/>
+            <apex:column value="{!c.id}"/>
+        </apex:pageBlockTable>
+</apex:pageBlock>
+ </apex:form>   -->
+</apex:page>

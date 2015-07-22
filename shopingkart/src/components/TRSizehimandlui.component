@@ -1,0 +1,45 @@
+<apex:component >
+                                    <table border="0">
+                                        <tr>
+                                            
+                                            <td> 
+                                                <div align="center"> Relaxed </div> 
+                                                <style> div.backgroundwholeTFRelaxed{background: url({!$Resource.TFRelaxed}) ;background-size:cover;height:300px;width:300px;border: 1px solid black;background-repeat: no-repeat;}</style> 
+                                                <div class="backgroundwholeTFRelaxed" onclick="myFunction4(this,'Relaxed','.TFRelaxed')">
+                                                <div class="transbox" >
+                                                <input type="checkbox" style="display:none" checked="none"  name="brand" value="Tshirt/Polo"/>
+                                                <p><div  class='collapse TFRelaxed'><apex:image url="{!$Resource.checkRed}" width="200"  height="200" style="margin:20px;" /></div></p>
+                                                </div>
+                                                </div>  
+
+                                                
+                                            </td>
+                                            <td> 
+                                                <div align="center"> Regular </div>
+                                                <style> div.backgroundwholeTFRegular{background: url({!$Resource.TFRegular}) ;background-size:cover;height:300px;width:300px;border: 1px solid black;background-repeat: no-repeat;}</style> 
+                                                <div class="backgroundwholeTFRegular" onclick="myFunction4(this,'Regular','.TFRegular')">
+                                                <div class="transbox" >
+                                                <input type="checkbox" style="display:none" checked="none"  name="brand" value="Tshirt/Polo"/>
+                                                <p><div  class='collapse TFRegular'><apex:image url="{!$Resource.checkRed}" width="200"  height="200" style="margin:20px;" /></div></p>
+                                                </div>
+                                                </div> 
+                                              
+                                                
+                                            </td>
+                                            <td> 
+                                                <div align="center"> Slim </div>
+ 
+                                                <style> div.backgroundwholeTFSlim{background: url({!$Resource.TFSlim}) ;background-size:cover;height:300px;width:300px;border: 1px solid black;background-repeat: no-repeat;}</style> 
+                                                <div class="backgroundwholeTFSlim" onclick="myFunction4(this,'Slim','.TFSlim')">
+                                                <div class="transbox" >
+                                                <input type="checkbox" style="display:none" checked="none"  name="brand" value="Tshirt/Polo"/>
+                                                <p><div  class='collapse TFSlim'><apex:image url="{!$Resource.checkRed}" width="200"  height="200" style="margin:20px;" /></div></p>
+                                                </div>
+                                                </div>  
+                                                
+                                            </td>
+                                            
+                                            
+                                        </tr>
+                                    </table>
+</apex:component>

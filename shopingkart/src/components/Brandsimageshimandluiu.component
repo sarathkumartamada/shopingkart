@@ -1,0 +1,157 @@
+<apex:component >
+                                    <table border="0">
+                                        <tr>
+                                            
+                                            <td> 
+
+                                                <style> div.backgroundwholeBRBarbour{background: url({!$Resource.BRBarbour}) ;height:200px;width:200px;border: 0px solid black;background-repeat: no-repeat;}</style> 
+                                                <div class="backgroundwholeBRBarbour" onclick="myFunction5(this,'Barbour','.BRBarbour')">
+                                                <div class="transbox" >
+                                                <input type="checkbox" style="display:none" checked="none"  name="brand" value="Tshirt/Polo"/>
+                                                <p><div  class='collapse BRBarbour'><apex:image url="{!$Resource.checkRed}" width="100"  height="100" style="margin:20px;" /></div></p>
+                                                </div>
+                                                </div>  
+
+                                                
+                                            </td>
+                                            <td> 
+
+                                                <style> div.backgroundwholeBRBoss{background: url({!$Resource.BRBoss}) ;height:200px;width:200px;border: 0px solid black;background-repeat: no-repeat;}</style> 
+                                                <div class="backgroundwholeBRBoss" onclick="myFunction5(this,'Boss','.BRBoss')">
+                                                <div class="transbox" >
+                                                <input type="checkbox" style="display:none" checked="none"  name="brand" value="Tshirt/Polo"/>
+                                                <p><div  class='collapse BRBoss'><apex:image url="{!$Resource.checkRed}" width="100"  height="100" style="margin:20px;" /></div></p>
+                                                </div>
+                                                </div>  
+ 
+                                                
+                                            </td>
+                                            <td> 
+                          
+                                                <style> div.backgroundwholeBRFredperry{background: url({!$Resource.BRFredperry}) ;height:200px;width:200px;border: 0px solid black;background-repeat: no-repeat;}</style> 
+                                                <div class="backgroundwholeBRFredperry" onclick="myFunction5(this,'redperry','.BRFredperry')">
+                                                <div class="transbox" >
+                                                <input type="checkbox" style="display:none" checked="none"  name="brand" value="Tshirt/Polo"/>
+                                                <p><div  class='collapse BRFredperry'><apex:image url="{!$Resource.checkRed}" width="100"  height="100" style="margin:20px;" /></div></p>
+                                                </div>
+                                                </div>  
+
+                                                
+                                            </td>
+                                            <td> 
+                                        
+                                
+                                                <style> div.backgroundwholeBRGant{background: url({!$Resource.BRGant}) ;height:200px;width:200px;border: 0px solid black;background-repeat: no-repeat;}</style> 
+                                                <div class="backgroundwholeBRGant" onclick="myFunction5(this,'Gant','.BRGant')">
+                                                <div class="transbox" >
+                                                <input type="checkbox" style="display:none" checked="none"  name="brand" value="Tshirt/Polo"/>
+                                                <p><div  class='collapse BRGant'><apex:image url="{!$Resource.checkRed}" width="100"  height="100" style="margin:20px;" /></div></p>
+                                                </div>
+                                                </div>  
+  
+                                                
+                                            </td>
+                                            
+                                            <td> 
+                        
+                                   
+                                                <style> div.backgroundwholeBRGap{background: url({!$Resource.BRGap}) ;height:200px;width:200px;border: 0px solid black;background-repeat: no-repeat;}</style> 
+                                                <div class="backgroundwholeBRGap" onclick="myFunction5(this,'Gap','.BRGap')">
+                                                <div class="transbox" >
+                                                <input type="checkbox" style="display:none" checked="none"  name="brand" value="Tshirt/Polo"/>
+                                                <p><div  class='collapse BRGap'><apex:image url="{!$Resource.checkRed}" width="100"  height="100" style="margin:20px;" /></div></p>
+                                                </div>
+                                                </div>  
+ 
+                                                
+                                            </td>
+                                            <td> 
+                                          
+                                    
+                                                <style> div.backgroundwholeBRHackett{background: url({!$Resource.BRHackett}) ;height:200px;width:200px;border: 0px solid black;background-repeat: no-repeat;}</style> 
+                                                <div class="backgroundwholeBRHackett" onclick="myFunction5(this,'Hackett','.BRHackett')">
+                                                <div class="transbox" >
+                                                <input type="checkbox" style="display:none" checked="none"  name="brand" value="Tshirt/Polo"/>
+                                                <p><div  class='collapse BRHackett'><apex:image url="{!$Resource.checkRed}" width="100"  height="100" style="margin:20px;" /></div></p>
+                                                </div>
+                                                </div>  
+                                              
+                                                
+                                            </td>
+                                            
+                                            <tr>   
+                                        </tr>         
+                                        
+                                        <td> 
+                                                <style> div.backgroundwholeBRLevis{background: url({!$Resource.BRLevis}) ;height:200px;width:200px;border: 0px solid black;background-repeat: no-repeat;}</style> 
+                                                <div class="backgroundwholeBRLevis" onclick="myFunction5(this,'Levis','.BRLevis')">
+                                                <div class="transbox" >
+                                                <input type="checkbox" style="display:none" checked="none"  name="brand" value="Tshirt/Polo"/>
+                                                <p><div  class='collapse BRLevis'><apex:image url="{!$Resource.checkRed}" width="100"  height="100" style="margin:20px;" /></div></p>
+                                                </div>
+                                                </div>  
+                                          
+                                        </td>
+                                        <td> 
+                                                <style> div.backgroundwholeBRPaulsmith{background: url({!$Resource.BRPaulsmith}) ;height:200px;width:200px;border: 0px solid black;background-repeat: no-repeat;}</style> 
+                                                <div class="backgroundwholeBRPaulsmith" onclick="myFunction5(this,'Paulsmith','.BRPaulsmith')">
+                                                <div class="transbox" >
+                                                <input type="checkbox" style="display:none" checked="none"  name="brand" value="Tshirt/Polo"/>
+                                                <p><div  class='collapse BRPaulsmith'><apex:image url="{!$Resource.checkRed}" width="100"  height="100" style="margin:20px;" /></div></p>
+                                                </div>
+                                                </div>  
+                                             
+                                           
+                                        </td>
+                                        
+                                        <td> 
+                                                <style> div.backgroundwholeBRRalphLauren{background: url({!$Resource.BRRalphLauren}) ;height:200px;width:200px;border: 0px solid black;background-repeat: no-repeat;}</style> 
+                                                <div class="backgroundwholeBRRalphLauren" onclick="myFunction5(this,'RalphLauren','.BRRalphLauren')">
+                                                <div class="transbox" >
+                                                <input type="checkbox" style="display:none" checked="none"  name="brand" value="Tshirt/Polo"/>
+                                                <p><div  class='collapse BRRalphLauren'><apex:image url="{!$Resource.checkRed}" width="100"  height="100" style="margin:20px;" /></div></p>
+                                                </div>
+                                                </div>  
+
+                                            
+                                        </td>
+                                        <td> 
+                                                <style> div.backgroundwholeBRReiss{background: url({!$Resource.BRReiss}) ;height:200px;width:200px;border: 0px solid black;background-repeat: no-repeat;}</style> 
+                                                <div class="backgroundwholeBRReiss" onclick="myFunction5(this,'Reiss','.BRReiss')">
+                                                <div class="transbox" >
+                                                <input type="checkbox" style="display:none" checked="none"  name="brand" value="Tshirt/Polo"/>
+                                                <p><div  class='collapse BRReiss'><apex:image url="{!$Resource.checkRed}" width="100"  height="100" style="margin:20px;" /></div></p>
+                                                </div>
+                                                </div>  
+                                            
+                             
+                                            
+                                        </td>        
+                                        <td> 
+                                                <style> div.backgroundwholeBRTedbaker{background: url({!$Resource.BRTedbaker}) ;height:200px;width:200px;border: 0px solid black;background-repeat: no-repeat;}</style> 
+                                                <div class="backgroundwholeBRTedbaker" onclick="myFunction5(this,'Tedbaker','.BRTedbaker')">
+                                                <div class="transbox" >
+                                                <input type="checkbox" style="display:none" checked="none"  name="brand" value="Tshirt/Polo"/>
+                                                <p><div  class='collapse BRTedbaker'><apex:image url="{!$Resource.checkRed}" width="100"  height="100" style="margin:20px;" /></div></p>
+                                                </div>
+                                                </div>  
+                                            
+ 
+                                            
+                                        </td>
+                                        <td> 
+                                                <style> div.backgroundwholeBRTommyhilfiger{background: url({!$Resource.BRTommyhilfiger}) ;height:200px;width:200px;border: 0px solid black;background-repeat: no-repeat;}</style> 
+                                                <div class="backgroundwholeBRTommyhilfiger" onclick="myFunction5(this,'Tommyhilfiger','.BRTommyhilfiger')">
+                                                <div class="transbox" >
+                                                <input type="checkbox" style="display:none" checked="none"  name="brand" value="Tshirt/Polo"/>
+                                                <p><div  class='collapse BRTommyhilfiger'><apex:image url="{!$Resource.checkRed}" width="100"  height="100" style="margin:20px;" /></div></p>
+                                                </div>
+                                                </div>  
+
+                                            
+                                            
+                                        </td>
+                                        
+                                    </tr>
+                                </table>
+</apex:component>

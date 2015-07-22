@@ -1,0 +1,636 @@
+<apex:page controller="accountForm" docType="html-5.0" standardStylesheets="false" sidebar="false"  showHeader="false">
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <apex:stylesheet value="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
+
+    <style>
+
+    div.transbox
+    {
+      margin: 30px;
+      
+      background-color: #ffffff;
+      border: 0px solid black;
+      height:200px;
+      width:200px;
+      opacity:0.4;
+      filter:alpha(opacity=60); /* For IE8 and earlier */
+    }
+    div.transbox p
+    {
+ 
+      margin: 5%;
+      font-weight: bold;
+      color: #000000;
+    }
+    .btn {
+    position: static;
+    }
+    </style>        
+        
+        
+        <script>
+
+        
+        
+        
+        
+        
+        
+        function myFunction(ele, Outfitvalue,cls) {
+        
+
+
+                        if(!ele.children.checked||ele.children.checked=='false')
+                        {
+                        $(cls).collapse('show');
+                        ele.children.checked='true';
+                        $(".OutfitBoxclass").find("option[value='"+Outfitvalue+"']").prop("selected", "true");
+
+                        }
+                        else
+                        {
+                         $(cls).collapse('hide');
+                        $(".OutfitBoxclass").find("option[value='"+Outfitvalue+"']").removeAttr("selected");                         
+                        ele.children.checked='false';
+
+                        }         
+
+        }
+        
+        function myFunction2(ele, Outfitvalue,cls) {
+        
+
+
+                        if(!ele.children.checked||ele.children.checked=='false')
+                        {
+                        $(cls).collapse('show');
+                        ele.children.checked='true';
+                        $(".WorkStyleclass").find("option[value='"+Outfitvalue+"']").prop("selected", "true");
+
+                        }
+                        else
+                        {
+                         $(cls).collapse('hide');
+                        $(".WorkStyleclass").find("option[value='"+Outfitvalue+"']").removeAttr("selected");                         
+                        ele.children.checked='false';
+
+                        }         
+
+        }        
+       
+
+    
+        function myFunction3(ele, Outfitvalue,cls) {
+        
+
+
+                        if(!ele.children.checked||ele.children.checked=='false')
+                        {
+                        $(cls).collapse('show');
+                        ele.children.checked='true';
+                        $(".preferredShirtFitclass").find("option[value='"+Outfitvalue+"']").prop("selected", "true");
+
+                        }
+                        else
+                        {
+                         $(cls).collapse('hide');
+                        $(".preferredShirtFitclass").find("option[value='"+Outfitvalue+"']").removeAttr("selected");                         
+                        ele.children.checked='false';
+
+                        }         
+
+        }        
+       
+    
+        function myFunction4(ele, Outfitvalue,cls) {
+        
+
+
+                        if(!ele.children.checked||ele.children.checked=='false')
+                        {
+                        $(cls).collapse('show');
+                        ele.children.checked='true';
+                        $(".preferredTrouserfitclass").find("option[value='"+Outfitvalue+"']").prop("selected", "true");
+
+                        }
+                        else
+                        {
+                         $(cls).collapse('hide');
+                        $(".preferredTrouserfitclass").find("option[value='"+Outfitvalue+"']").removeAttr("selected");                         
+                        ele.children.checked='false';
+
+                        }         
+
+        }        
+       
+    
+        function myFunction5(ele, Outfitvalue,cls) {
+        
+
+
+                        if(!ele.children.checked||ele.children.checked=='false')
+                        {
+                        $(cls).collapse('show');
+                        ele.children.checked='true';
+                        $(".Brandclass").find("option[value='"+Outfitvalue+"']").prop("selected", "true");
+
+                        }
+                        else
+                        {
+                         $(cls).collapse('hide');
+                        $(".Brandclass").find("option[value='"+Outfitvalue+"']").removeAttr("selected");                         
+                        ele.children.checked='false';
+
+                        }         
+
+        }        
+       
+    
+
+        window.onload=function(){
+        $(".home").collapse('show');
+        };
+
+
+        
+    
+     function navbar(para){
+        
+        if(para=='home')
+        {
+        $(".outfit").collapse('hide');
+        $(".style").collapse('hide');
+        $(".profile").collapse('hide');
+        $(".home").collapse('show');
+        $(".mycart").collapse('hide');
+        }
+        else if(para=='Outfits')
+                {
+                $(".outfit").collapse('show');
+                $(".style").collapse('hide');
+                $(".profile").collapse('hide');
+                $(".home").collapse('hide');
+                $(".mycart").collapse('hide');
+                }
+            else if(para=='Style')
+                    {
+                    
+                    $(".outfit").collapse('hide');
+                    $(".style").collapse('show');
+                    $(".profile").collapse('hide');
+                    $(".home").collapse('hide');
+                    $(".mycart").collapse('hide');
+                    }
+               else if(para=='profile')
+                {
+                    $(".outfit").collapse('hide');
+                    $(".style").collapse('hide');
+                    $(".profile").collapse('show');
+                    $(".home").collapse('hide');
+                    $(".mycart").collapse('hide');
+                    } 
+               else
+                {
+                    $(".outfit").collapse('hide');
+                    $(".style").collapse('hide');
+                    $(".profile").collapse('hide');
+                    $(".home").collapse('hide');
+                    $(".mycart").collapse('show');
+                    fillmyProductids();
+                    } 
+            };
+    
+    </script>
+
+       <c:navbar brand="himandlui"  inverse="false" type="fixed-top">  
+            <apex:form >
+            <b> </b>{!Myaccount.Name}
+            <apex:inputhidden value="{!produstids}" id="myproducts"/> <apex:actionFunction name="mycart" action="{!mycartref}" reRender="cartoutputpannel"/>
+            <a class="btn btn-primary btn-md"  href="/apex/login"  width="30px"  height="30px">Logout</a>
+            <apex:pageMessages ></apex:pageMessages>
+            </apex:form>
+        </c:navbar> 
+
+         <nav class="navbar navbar-default">
+                <div class="btn-group" role="group" aria-label="...">
+                  <button type="button" class="btn btn-info" onclick="navbar('home')">Home</button>
+                  <button type="button" class="btn btn-info" onclick="navbar('Outfits')">Outfits</button>
+                  <button type="button" class="btn btn-info" onclick="navbar('Style')">Style</button>
+                  <button type="button" class="btn btn-info" onclick="navbar('profile')">profile</button>
+                  <button type="button" class="btn btn-info" onclick="navbar('Cart')"><image src="{!$Resource.cart}" width="25px" height="25"/> Cart <span id="badgeid" class="badge "></span></button>
+              <!--    <a class="btn btn-info btn-md" onclick="fillmyProductids()"><image src="{!$Resource.cart}" width="25px" height="25"/> Cart <span id="badgeid" class="badge "></span></a>-->
+              <script>
+                  function fillmyProductids(){
+                  var inputs = document.getElementsByTagName('input');
+                 
+                    for(var x = 0; x < inputs.length; x++) 
+                    {
+                    if(inputs[x].id.indexOf('myproducts') >= 0) { inputs[x].value =myids;}
+                    
+                    }
+                    
+                  mycart();
+                  }
+              </script>
+              
+              
+                </div>
+         </nav>       
+        
+         <div id="home" class="collapse home">
+         
+
+         
+              <div>
+              
+              
+              <c:products3 accountid="{!Myaccount.id}"/>
+              
+              
+              
+              
+              
+              
+                   <table border="0">
+                         <tr><apex:pageMessages ></apex:pageMessages>
+                             <td>   <apex:image styleClass="backimg" url="{!$Resource.wardrobe}" >
+                               <div style="color: #00000; text-align:center;">
+                                 
+                                <div style="color: #00000; text-align:center;"><h3>Welcome {!Myaccount.Name}</h3>
+                                </div>
+                                 
+                                <h3 class="ls-l" style="top:188px;left:949px;white-space: nowrap;"/>
+                                <div style="color: #00000; text-align:center;"><div>
+                                 
+                                </div> </div>  
+                              </div>
+                              </apex:image>
+                             </td> 
+                         </tr>      
+                    </table>
+             </div>
+
+         </div>
+        
+        
+        
+             <apex:form id="outfit" styleClass="collapse outfit">  
+                  <div class="container-fluid">
+                   
+
+                               <div class="tab-content">
+                                    <div id="Outfit" class="tab-pane fade in active">
+                                        <c:parallax_demo >
+                                        <c:Assignedoutfits AccountId="{!myid}"></c:Assignedoutfits>
+                                        </c:parallax_demo>      
+                                     </div>
+                                  </div>
+ 
+                              </div>     
+                     </apex:form>
+
+        <apex:form id="style" styleClass="collapse style">
+            
+            
+            <div class="container-fluid ">
+                <ul class="nav nav-pills">
+                    <li class="active" ><a data-toggle="pill" href="#home">Box</a></li>
+                    <li ><a data-toggle="pill" href="#menu1">Style </a></li>
+                    <li><a data-toggle="pill" href="#menu2">Shirt Type </a></li>
+                    <li><a data-toggle="pill" href="#menu3">Trouser Type </a></li>
+                    <li><a data-toggle="pill" href="#menu4">Dimensions </a></li>
+                    <li><a data-toggle="pill" href="#menu5">Brand</a></li>
+                    
+                </ul>
+                
+                
+                
+                <div class="tab-content">
+                    <div id="home" class="tab-pane fade in active">
+                        
+                        
+                        <div data-role="page" id="p1">
+                            <div data-role="header">
+                                <h3>Prefer You box content</h3>
+                            </div><!-- /header -->
+                            <div data-role="content">
+                            <div class="progress">
+                              <div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 10%;">
+                                10%
+                              </div>
+                            </div>
+                                <apex:pageBlock >
+
+                                    
+                                    
+
+                                        
+                                        <c:PreferenceHimandlui />
+                                        
+                                        
+                                       
+
+                                </apex:pageBlock> <br/>
+                                
+
+                            </div>
+                        </div>
+                        
+                        
+                    </div>
+                    
+                    <div id="menu1" class="tab-pane fade">
+                        
+                        <div data-role="page" id="p2">
+                            <div data-role="header">
+                                <h3>Prefered Style</h3>
+                            </div><!-- /header -->
+                            <div data-role="content">
+                             <div class="progress">
+                              <div class="progress-bar" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 30%;">
+                                30%
+                              </div>
+                            </div>
+                                <apex:pageBlock >
+                                    
+                                    
+                                    <c:WorkstyleHimandlui />
+
+                                    
+                                </apex:pageBlock> <br/>
+                              
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    <div id="menu2" class="tab-pane fade">
+                        <h3>Menu 3</h3>
+                        <div data-role="page" id="p3">
+                            <div data-role="header">
+                                <h3>Shirt fit</h3>
+                            </div><!-- /header -->
+                            <div data-role="content">
+                            <div class="progress">
+                              <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%;">
+                                50%
+                              </div>
+                            </div>                            
+                                <apex:pageBlock >
+                                    
+                                    
+                                    <c:SFSizehimandlui />
+                                  
+                                    
+                                    <apex:pageBlockSection >
+                                      
+                                    </apex:pageBlockSection>
+                                </apex:pageBlock> <br/>
+                            
+                            </div>
+                        </div>
+                        
+                    </div>
+                    
+                    
+                    
+                    <div id="menu3" class="tab-pane fade">
+                        <h3>Menu 4</h3>
+                        <div data-role="page" id="p4">
+                            <div data-role="header">
+                                <h3>Preferred fit</h3>
+                            </div><!-- /header -->
+                            <div data-role="content">
+                            <div class="progress">
+                              <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;">
+                                70%
+                              </div>
+                            </div>                            
+                                <apex:pageBlock >
+                                      
+
+                                    <c:TRSizehimandlui />
+                                  
+                                    
+                                    <apex:pageBlockSection >
+                                      
+                                    </apex:pageBlockSection>
+                                </apex:pageBlock> <br/>
+                               
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <div id="menu4" class="tab-pane fade">
+                        <h3>Menu 5</h3>
+                        <div data-role="page" id="p5">
+                            <div data-role="header">
+                                <h3>Please select budject and Diemensions</h3>
+                            </div><!-- /header -->
+                            <div data-role="content">
+                            <div class="progress">
+                              <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 85%;">
+                                85%
+                              </div>
+                            </div>                            
+                                <apex:pageBlock >
+                                    
+                                    <!--       <table border="0">
+<tr>
+
+<td> 
+<div align="center"> Casual </div> 
+
+<apex:image url="{!$Resource.WSCasuals}" width="300"  height="300" style="margin:20px;" onmouseup="Casual"/> 
+
+</td>
+<td> 
+<div align="center"> Formal</div>
+
+<apex:image url="{!$Resource.WSFormal}" width="300" height="300" style="margin:20px;"/> 
+
+</td>
+<td> 
+<div align="center"> Business</div>
+
+<apex:image url="{!$Resource.WSBusiness}" width="300" height="300" style="margin:20px;"/>   
+
+</td>
+<td> 
+<div align="center"> Trendy</div>
+
+<apex:image url="{!$Resource.WSTrendy}" width="300" height="300" style="margin:20px;"/>  
+
+</td>
+
+
+</tr>
+</table>--->
+                                    
+  
+                                    <div class="container">
+                                      <div class="row">
+                                        <div class="col-sm-4">
+                                            <h3>Budjet</h3>
+                                                <apex:selectList styleClass="form-control" value="{!Budjet}" size="1" label="Budjet">
+                                                <apex:selectOptions value="{!Types}"/>
+                                                </apex:selectList>
+                                        </div>
+                                      
+                                        <div class="col-sm-4">                               
+                                            <h3>Collar</h3>
+                                                <apex:selectList styleClass="form-control" value="{!COLLAR}" size="1" label="COLLAR">
+                                                <apex:selectOptions value="{!COLLARs}"/>
+                                                </apex:selectList>
+                                         </div>
+                                         <div class="col-sm-4"> 
+                                                <h3>HEIGHT</h3>
+                                                <apex:selectList styleClass="form-control" value="{!HEIGHT}" size="1" label="HEIGHT">
+                                                <apex:selectOptions value="{!HEIGHTs}"/>
+                                                </apex:selectList>
+                                         </div>
+                                     </div>  
+                                     <div class="row">
+                                     
+                                         <div class="col-sm-4">
+                                                 <h3>JACKET</h3>
+                                                <apex:selectList styleClass="form-control" value="{!JACKET}" size="1" label="JACKET">
+                                                <apex:selectOptions value="{!JACKETs}"/>
+                                                </apex:selectList>
+                                         </div>
+
+                                          <div class="col-sm-4">
+                                               <h3>SHOES</h3>
+                                                <apex:selectList styleClass="form-control" value="{!SHOES}" size="1" label="SHOES">
+                                                <apex:selectOptions value="{!SHOESs}"/>
+                                                </apex:selectList>
+                                          </div> 
+                                                                                 
+                                          <div class="col-sm-4">
+                                               <h3>TopSize</h3>      
+                                                <apex:selectList styleClass="form-control" value="{!TopSize}" size="1" label="TopSize">
+                                                <apex:selectOptions value="{!TopSizes}"/>
+                                                </apex:selectList>
+                                          </div> 
+                                     </div>
+                                     <div class="row">
+                                          <div class="col-sm-4">
+                                                <h3>WAIST</h3>  
+                                                <apex:selectList styleClass="form-control" value="{!WAIST}" size="1" label="WAIST">
+                                                <apex:selectOptions value="{!WAISTs}"/>
+                                                </apex:selectList>
+                                          </div>
+                                     </div>
+                                    </div>                                        
+ 
+                                    
+                                </apex:pageBlock> <br/>
+                               
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    
+                    <div id="menu5" class="tab-pane fade">
+                        <h3>Menu 5</h3>
+                        
+                        
+                        <div data-role="page" id="p6">
+                            <div data-role="header">
+                                <h3>Brand</h3>
+                            </div><!-- /header -->
+                            <div data-role="content">
+                            <div class="progress">
+                              <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                                100%
+                              </div>
+                            </div>                            
+                                <apex:pageBlock >
+                                    
+                                    <c:Brandsimageshimandluiu />
+                                
+                                <apex:pageBlockSection >
+                                    
+                                    <apex:pageMessages ></apex:pageMessages>
+                                </apex:pageBlockSection>
+                            </apex:pageBlock> <br/>
+                           <apex:pageBlock >
+                            <apex:commandButton value="Update" action="{!addstyle}" oncomplete="$('.collapse').collapse('hide');"/>
+                                 <div style="visibility: hidden">
+                                    <table>
+                                     <tr>
+                                       <td> <apex:selectList styleClass="form-control OutfitBoxclass" multiselect="true"  value="{!OutfitBox}" size="10" label="Budjet">
+                                            <apex:selectOptions value="{!OutfitBoxs}"/>
+                                        </apex:selectList>
+                                       </td>
+                                    </tr>
+                                    <tr>
+                                       <td>
+                                        <apex:selectList styleClass="form-control WorkStyleclass" multiselect="true" value="{!WorkStyle}" size="10" label="COLLAR">
+                                            <apex:selectOptions value="{!WorkStyles}"/>
+                                        </apex:selectList>
+                                       </td>
+                                     </tr>
+                                       <td>
+                                        <apex:selectList styleClass="form-control preferredShirtFitclass" multiselect="true" value="{!preferredShirtFit}" size="11" label="HEIGHT">
+                                            <apex:selectOptions value="{!preferredShirtFits}"/>
+                                        </apex:selectList>
+                                        </td>
+                                       <td>
+                                        <apex:selectList styleClass="form-control preferredTrouserfitclass" multiselect="true" value="{!preferredTrouserfit}" size="10" label="JACKET">
+                                            <apex:selectOptions value="{!preferredTrouserfits}"/>
+                                        </apex:selectList>
+                                        </td>
+                                       <td>
+                                        <apex:selectList styleClass="form-control Brandclass" multiselect="true" value="{!Brand}" size="10" label="SHOES">
+                                            <apex:selectOptions value="{!Brands}"/>
+                                        </apex:selectList>
+                                       </td>
+                                   </table>   
+                                      </div>
+                           </apex:pageBlock>
+                           
+                        </div>
+                    </div>
+                </div>  
+                      
+        </div>
+     </div>   
+        
+    </apex:form>    
+    
+     <div id="home" class="collapse  profile">
+       <apex:form style="collapse profile">
+           <apex:pageBlock > 
+             <apex:commandButton value="Edit"/>
+                 <apex:outputPanel styleClass="form-group" id="detail">
+                     <apex:detail relatedList="false" subject="{!Myaccount.id}"/>
+                </apex:outputPanel>
+           </apex:pageBlock>
+       </apex:form>
+      </div>   
+      
+     <div id="home" class="collapse mycart">
+     <apex:pageBlock id="cartoutputpannel">
+  <!--   <apex:outputPanel id="cartoutputpannel">-->
+     <b></b>
+      <c:mycart3 accountid="{!myid}" productids="{!produstids}"/>
+   <!--  </apex:outputPanel>-->
+   </apex:pageBlock>
+      </div>       
+      
+       <c:navbar brand="Balakrishna" inverse="false" type="fixed-bottom" layout="none">  
+            <center>  
+                <apex:outputPanel styleClass="text-muted" style="margin:20px;font-size:130%" layout="block">  
+                    <c:glyph icon="bullhorn"/>
+                </apex:outputPanel>  
+            </center>  
+        </c:navbar> 
+        
+
+</apex:page>

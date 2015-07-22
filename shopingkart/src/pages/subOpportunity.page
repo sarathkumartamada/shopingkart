@@ -1,0 +1,42 @@
+<apex:page standardController="Opportunity"  extensions="subOpportunityController" >
+            
+            <apex:form >
+            
+                <apex:pageBlock title="Related Sub Opportunities" >
+                    <apex:pageBlockSection >
+                        <apex:pageBlockTable value="{!opportunities}" var="opp">
+                       
+                        
+                         <apex:column value="{!opp.name}"/>
+                          <apex:column value="{!opp.Amount}"/>
+                           <apex:column value="{!opp.CloseDate}"/>
+                            <apex:column value="{!opp.ExpectedRevenue}"/>
+                             <apex:column value="{!opp.ForecastCategoryName}"/>
+                              <apex:column value="{!opp.LeadSource}"/>
+                               <apex:column value="{!opp.NextStep}"/>
+                                <apex:column value="{!opp.Probability}"/>
+                                 <apex:column value="{!opp.TotalOpportunityQuantity}"/>
+                                  <apex:column value="{!opp.StageName }"/>
+                                  <apex:column value="{!opp.SubOpportunityType__c}"/>
+                                  <apex:column value="{!opp.Parent_Opportunity__c}"/>
+                                  <apex:column value="{!opp.id}"/>
+                                  <apex:column >   
+                                  <apex:commandLink value="edit" action="{!OppEdit}">
+                                  
+                                  <apex:param name="Oppid" value="{!opp.id}"/>
+                                  </apex:commandLink>
+                                  </apex:column>
+                                  <apex:column >
+                                  <apex:commandLink value="delete" action="{!oppdelete}">
+                                  <apex:param name="Oppid" value="{!opp.id}"/></apex:commandLink>
+                                  </apex:column>
+                                  
+                        </apex:pageBlockTable>
+                    </apex:pageBlockSection>
+                
+                </apex:pageBlock>
+            
+            </apex:form>
+            
+            
+</apex:page>

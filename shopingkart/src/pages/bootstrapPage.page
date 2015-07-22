@@ -1,0 +1,147 @@
+<apex:page standardController="Account" standardStylesheets="true" showHeader="false" sidebar="false"  docType="html-5.0">
+
+ <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"/>
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>-->
+  <apex:stylesheet value="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+        window.onload=function(){
+        $(".ccollapse").collapse('show');
+        };
+    
+           
+    function BillAdd(){
+        
+        if(txt.value=='Other')
+        {
+        $(".ccollapse").collapse('hide');
+        }
+        else
+        $(".ccollapse").collapse('show');
+    };
+    function hideTextParentId()
+    {
+    $(".hideTextParentId").collapse('hide');
+    $(".listacc").collapse('show');
+    }
+    
+</script>  
+
+<!-- <script>
+  $(function() {
+
+        
+    var projects=[];
+    Balakrishna.BootsrapPageController.getAccountList(function(result, event){
+                    console.log('bootsrapPageController.getAccountList '+result);
+                    $.each( result, function( intValue, currentElement ) {
+                             console.log('currentElement.Id  '+currentElement.Id +' currentElement.Name '+currentElement.Name);
+                             projects.push({value:currentElement.Id,label:currentElement.Name});
+                             });
+                             });
+ 
+      $( ".pid" ).autocomplete({
+                                            minLength: 0,
+                                            source: projects,
+                                            focus: function( event, ui ) {
+                                                  $( ".pid" ).val( ui.item.value );
+                                                  return false;
+                                            },
+                                            select: function( event, ui ) {
+                                                  $( ".pid" ).val( ui.item.value );
+                                                  return false;
+                                             }
+                      }).autocomplete( "instance" )._renderItem = function( ul, item ) {
+                                return $( "<li>" ).append( "<a>" + item.label + "<br>" + item.value + "</a>" ).appendTo( ul );
+                          };
+                          
+                            
+                         
+                      });
+  
+  </script>-->
+
+
+
+
+
+  <nav class="navbar navbar-default"> 
+ 
+ 
+ 
+  </nav>   
+<form role="form" class="form-signin">  
+  <div class="container-fluid">     
+         <apex:form styleClass="sucess">     
+               <apex:pageBlock >
+                    <div class="panel panel-info">
+                     <div class="panel-heading">NEW Account</div>
+                    
+                       <apex:pageBlockSection columns="2" >
+                      
+                            <apex:inputField styleClass="form-control"  value="{!Account.name}"/>
+                            <apex:inputField styleClass="form-control" value="{!account.Rating}"/>
+                            <apex:inputField styleClass="form-control" value="{!account.Phone}"/>
+                            <apex:inputField styleClass="form-control" value="{!account.AccountNumber}" required="true"/>
+                             <apex:inputField styleClass="form-control" value="{!account.Website}"/>
+                             <apex:inputField styleClass="form-control"  value="{!account.Type}" onchange="BillAdd();" id="acctype">
+                             <script>var txt = document.getElementById('{!$Component.acctype}');</script>
+                             </apex:inputField>
+                             
+                             <apex:inputField styleClass="form-control"  value="{!account.Industry}" required="true" onchange="Rerender"/>
+                             <apex:actionFunction name="Rerender" reRender="reRenderObj"/>
+                             
+                             <apex:pageBlockSectionItem rendered="true">
+                             <apex:outputText >Parent</apex:outputText>
+                             <c:AutoComplete allowClear="true" importJquery="true" labelField="Name" SObject="Account" valueField="Id" targetField="{!account.Parentid}" style="width:200px"/>
+                             </apex:pageBlockSectionItem> 
+                             
+                            
+                             
+                            
+                              
+
+                           
+                           </apex:pageBlockSection>
+                    
+                    </div>
+                    <div class="ccollapse">
+                    <div class="panel panel-info">
+                         <div class="panel-heading">Address Information</div>
+                         <apex:pageBlockSection columns="2" id="reRenderObj">
+                        <apex:inputField styleClass="form-control"  value="{!Account.name}"/>
+                        <apex:inputField html-data-val="true" html-data-val-length="First 3" styleClass="form-group" value="{!account.BillingStreet}" id="ref"/>
+                        <apex:inputField styleClass="form-group" value="{!account.BillingCity}"/>
+                        <apex:inputField styleClass="form-group" value="{!account.BillingState}"/>
+                        <apex:inputField styleClass="form-group" value="{!account.BillingCountry}"/>
+                        <apex:inputField styleClass="form-group" value="{!account.ShippingCity}"/>
+                        <apex:inputField styleClass="form-group" value="{!account.ShippingCountry}"/>
+                                                  <apex:pageBlockSectionItem >
+                             <apex:outputText >Owner</apex:outputText>
+                             <c:AutoComplete allowClear="true" importJquery="true" labelField="Name" SObject="User" valueField="Id" targetField="{!account.Ownerid}" style="width:200px"/>
+                             </apex:pageBlockSectionItem>
+                        </apex:pageBlockSection>
+     
+                    </div>
+                    </div>
+                    <div class="panel panel-info">
+                     <div class="panel-heading">Additional Information</div>
+                    
+                         <apex:pageBlockSection columns="2">
+ 
+                        <apex:inputField styleClass="form-group" value="{!account.CustomerPriority__c}"/>
+                        <apex:inputField styleClass="form-group" value="{!account.SLA__c}"/>
+                        <apex:inputField styleClass="form-group slaId" value="{!account.SLAExpirationDate__c}" id="datetimepicker"  type="date"/>
+                        <apex:inputField styleClass="form-group" value="{!account.SLASerialNumber__c}"/>
+                        </apex:pageBlockSection>
+                   
+                    </div>  
+                  </apex:pageBlock>
+                  <apex:commandButton styleClass="btn btn-success " action="{!save}" value="save"/>
+         
+        </apex:form>
+  </div>   
+</form>
+</apex:page>

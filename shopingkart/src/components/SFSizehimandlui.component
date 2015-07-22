@@ -1,0 +1,46 @@
+<apex:component >
+                                      <table border="0">
+                                        <tr>
+                                            
+                                            <td> 
+                                                <div align="center"> Slim </div> 
+                                                <style> div.backgroundwholeSFSlim{background: url({!$Resource.SFSlim}) ;background-size:cover;height:300px;width:300px;border: 1px solid black;background-repeat: no-repeat;}</style> 
+                                                <div class="backgroundwholeSFSlim" onclick="myFunction3(this,'Extra Slim','.SFSlim')">
+                                                <div class="transbox" >
+                                                <input type="checkbox" style="display:none" checked="none"  name="brand" value="Tshirt/Polo"/>
+                                                <p><div  class='collapse SFSlim'><apex:image url="{!$Resource.checkRed}" width="200"  height="200" style="margin:20px;" /></div></p>
+                                                </div>
+                                                </div>   
+
+                                                
+                                            </td>
+                                            <td> 
+                                                <div align="center"> Relaxed </div>
+                                                <style> div.backgroundwholeSFRelaxed{background: url({!$Resource.SFRelaxed}) ;background-size:cover;height:300px;width:300px;border: 1px solid black;background-repeat: no-repeat;}</style> 
+                                                <div class="backgroundwholeSFRelaxed" onclick="myFunction3(this,'Regular','.SFRelaxed')">
+                                                <div class="transbox" >
+                                                <input type="checkbox" style="display:none" checked="none"  name="brand" value="Tshirt/Polo"/>
+                                                <p><div  class='collapse SFRelaxed'><apex:image url="{!$Resource.checkRed}" width="200"  height="200" style="margin:20px;" /></div></p>
+                                                </div>
+                                                </div>                                                   
+
+                                                
+                                            </td>
+                                            <td> 
+                                                <div align="center"> Classic</div>
+                                                <style> div.backgroundwholeSFClassic{background: url({!$Resource.SFClassic}) ;background-size:cover;height:300px;width:300px;border: 1px solid black;background-repeat: no-repeat;}</style> 
+                                                <div class="backgroundwholeSFClassic" onclick="myFunction3(this,'Slim','.SFClassic')">
+                                                <div class="transbox" >
+                                                <input type="checkbox" style="display:none" checked="none"  name="brand" value="Tshirt/Polo"/>
+                                                <p><div  class='collapse SFClassic'><apex:image url="{!$Resource.checkRed}" width="200"  height="200" style="margin:20px;" /></div></p>
+                                                </div>
+                                                </div>                                                   
+ 
+                                                
+                                            </td>
+                                            
+                                            
+                                            
+                                        </tr>
+                                    </table>
+</apex:component>

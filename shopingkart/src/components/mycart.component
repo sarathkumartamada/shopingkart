@@ -1,0 +1,118 @@
+<apex:component controller="ProductImagesAttachments" allowDML="true">
+    <apex:form >
+        <c:navbar brand="himandlui"  inverse="false" type="fixed-top">  
+            
+            <b> </b>
+
+
+            <a class="btn btn-success btn-md"  href="/apex/login">Logout</a><b> </b>
+            <a class="btn btn-info btn-md" onclick="fillmyProductids()"><image src="{!$Resource.cart}" width="25px" height="25"/> Cart <span id="badgeid" class="badge "></span></a>
+            
+        </c:navbar> 
+    </apex:form>    
+    <apex:form >    
+    <div class="container-fluid">
+            <apex:actionFunction name="Cart" action="{!mycartref}" reRender="grid"/>
+            <script>
+             function Cartfunction(family)
+            {
+            alert(family);
+            findfamily=document.getElementById('{!$Component.findfamily}');
+            findfamily.value=family;
+            
+              mycartref();          
+            }
+            </script>
+        <apex:inputHidden value="{!mycartproductids}"/>
+        <apex:repeat value="{!MyCartProduct}" var="pro">
+        <div class="row">
+            <div class="col-md-3">
+                    <apex:variable value="{!pro.Attachments[0]}" var="image"/>
+                    <apex:image styleClass="img-responsive" url="{!URLFOR($Action.Attachment.Download,image)}" width="200px" height="200px" />
+            </div>
+            <div class="col-md-3">
+                <div class="row">
+                    <div class="col-md-3">
+                    <p>Product code</p>
+                    </div>
+                <div class="col-md-9">
+                    <apex:outputText styleClass="form-control" value="{!pro.productcode}"/>
+                </div>    
+                </div>
+                                <div class="row">
+                <div class="col-md-3">
+                <p>Type</p>
+                </div>
+                <div class="col-md-9">
+                    <apex:outputText styleClass="form-control" value="{!pro.family}"/>
+                </div>    
+                </div>
+                <div class="row">
+                <div class="col-md-3">
+                <p>Name</p>
+                </div>
+                <div class="col-md-9">
+                    <apex:outputText styleClass="form-control" value="{!pro.name}"/>
+                </div>    
+                </div>
+           <!--     <div class="row">
+                <div class="col-md-3">
+                <p>Available colours</p>
+                </div>
+              
+                    <script>
+                    $('.selectedmyprcolourpicklist').click(function () {
+                    var colourvalue='{!pro.colour__c}'
+                    alert(colourvalue);
+                    
+                    }
+                    </script>
+                <div class="col-md-9">
+                <li class="dropdown">
+                  <button href="#" class="dropdown-toggle btn btn-info selectedmyprcolourpicklist" data-toggle="dropdown" >Colours<span class="caret"></span></button >
+                  <ul class="dropdown-menu" role="menu">
+                    <li class="dropdown-header">Dropdown heading</li>
+
+ 
+                  </ul>
+                </li>
+                </div>
+                 </div> -->
+                <div class="row">
+                <div class="col-md-3">
+                <p>Quantity</p>
+                </div>
+                <div class="col-md-9">
+                    <apex:inputText styleClass="form-control" value="{!quantity}"/>
+                </div>    
+                </div>  
+
+                <div class="row">
+                <div class="col-md-3">
+                <p>Available</p>
+                </div>
+                <div class="col-md-9">
+                    <apex:outputText styleClass="form-control" value="{!pro.Available__c}"/>
+                </div>    
+                </div> 
+               
+
+            </div>
+            <div class="col-md-3">
+            <apex:commandLink styleClass="btn btn-info" value="Buy All"/>
+            <apex:commandLink styleClass="btn btn-info" value="Remove"/>
+            <input type="button" Class="btn btn-info" value="Select" />
+            </div>
+        </div>
+        </apex:repeat>
+
+        <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6"></div>
+                    <div class="col-md-3"> <apex:commandlink styleClass="btn btn-primary" action="{!Buy}" value="Buy Selected"/></div>
+               </div>
+        </div>    
+    </div>
+
+   </apex:form>    
+</apex:component>

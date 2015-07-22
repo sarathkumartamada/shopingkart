@@ -1,0 +1,19 @@
+<apex:page standardController="opportunity" extensions="cloneOpportunityControlles" >
+<script>
+window.onload = function call() {
+
+
+clonee();
+}
+</script>
+
+<apex:form ><!--
+<apex:actionFunction name="clonee" action="{!clonee}" reRender="resPanel"/>
+<apex:outputPanel id="resPanel">
+<apex:inputText />
+</apex:outputPanel>-->
+
+<apex:actionFunction name="clonee" action="{!clonee}"   oncomplete="SendMail()"/>
+<apex:actionFunction name="SendMail" action="{!SendMail}" oncomplete="window.top.close();" />
+</apex:form>
+</apex:page>

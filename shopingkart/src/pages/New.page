@@ -1,0 +1,126 @@
+<apex:page controller="ProductController" >
+  
+ 
+  
+        <apex:form >
+            <apex:pageBlock >
+            
+            <apex:inputText value="{!Searchkey}"/>
+            <apex:commandButton value="find" action="{!find}" />
+            
+            
+            
+            
+            
+            <span style="float: right; margin: 5px 5px 5px 5px;">
+            <apex:repeat value="{!AlphaList}" var="alist">
+                     <apex:commandLink value="{!alist}" action="{!BuildQuery}" rerender="SelectBlock"
+                     styleClass="alpha-link{!if(AlphaFilter=alist,' alpha-select','')}" status="TableUpdateStatus">
+                     <apex:param name="AlphaFilter" value="{!alist}" assignTo="{!AlphaFilter}" />
+                     </apex:commandLink>
+                     &nbsp;&nbsp;
+               
+            </apex:repeat></span> 
+            </apex:pageBlock>
+    
+      
+    
+    <div style="clear: both;"></div>
+        </apex:form>
+        
+        
+        
+   <apex:form >
+    <apex:pageBlock >
+        <apex:pageBlockSection columns="1" id="SelectBlock">
+            
+           <apex:pageBlockTable value="{!Products}" var="c" > 
+            
+            
+                
+            
+                 
+            
+        
+             
+            
+            
+         
+               <apex:column headerValue="select">
+               <apex:inputCheckbox value="{!c.flag}">
+               <apex:actionSupport event="onchange" action="{!addRecord}" reRender="output,selected,grid" >
+               <apex:param name="schId" value="{!c.pr.id}"/>
+               </apex:actionSupport>
+               </apex:inputCheckbox>
+               </apex:column>  
+               
+               <apex:column >  
+               <apex:facet name="header">
+                <apex:commandLink action="{!find}" value="Product Name" id="cmdSort">
+              <apex:param value="name" name="column" assignTo="{!sortExpression}" ></apex:param>
+              </apex:commandLink>
+              </apex:facet> 
+                <apex:outputField value="{!c.pr.Name}"/>
+                </apex:column>
+                
+                <apex:column >  
+               <apex:facet name="header">
+                <apex:commandLink action="{!find}" value="Product Code" >
+              <apex:param value="ProductCode" name="column" assignTo="{!sortExpression}" ></apex:param>
+              </apex:commandLink>
+              </apex:facet> 
+                <apex:outputField value="{!c.pr.ProductCode}"/>
+                </apex:column>
+                
+                
+                <apex:column value="{!c.pr.Family}"/>
+                <apex:column value="{!c.pr.Name}"/>
+                <apex:column value="{!c.pr.SystemModstamp}"/> 
+                
+                
+            </apex:pageBlockTable>  
+            
+          
+            <apex:panelGrid columns="7" id="grid">
+            <apex:commandButton value="|<<" action="{!setcon.first}" disabled="{!!setcon.hasPrevious}" title="First page"/>
+            <apex:commandButton value="<" action="{!setcon.previous}" disabled="{!!setcon.hasPrevious}" title="Previous page"/>
+            <apex:commandButton value=">" action="{!setcon.next}" disabled="{!!setcon.hasNext}" title="Next page"/>
+            <apex:commandButton value=">>|" action="{!setcon.last}" disabled="{!!setcon.hasNext}" title="Last page"/>
+           
+             <apex:outputText >{!(setCon.pageNumber * size)}  of {!noOfRecords}</apex:outputText>
+
+             
+            </apex:panelGrid>   
+             
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+
+
+  <apex:pageBlock id="selected">
+   <apex:commandButton value="save" action="{!insertRecords}" oncomplete="window.top.close();"/> 
+   <apex:commandButton value="cancel" onclick="window.top.close();"/>
+    <apex:pageBlockSection > 
+   <apex:pageBlockTable value="{!SelctedSetconList}" var="cnt" >
+   
+   <apex:column value="{!cnt.Name}"/>
+                <apex:column value="{!cnt.ProductCode}"/>
+                <apex:column value="{!cnt.Family}"/>
+                <apex:column value="{!cnt.Description}"/>
+                <apex:column value="{!cnt.SystemModstamp}"/>
+
+   </apex:pageBlocktable>  
+   </apex:pageBlockSection>   
+   <apex:panelGrid columns="7">
+            <apex:commandButton value="|<<" action="{!selectedsetcon.first}" disabled="{!!selectedsetcon.hasPrevious}" title="First page"/>
+            <apex:commandButton value="<" action="{!selectedsetcon.previous}" disabled="{!!selectedsetcon.hasPrevious}" title="Previous page"/>
+            <apex:commandButton value=">" action="{!selectedsetcon.next}" disabled="{!!selectedsetcon.hasNext}" title="Next page"/>
+            <apex:commandButton value=">>|" action="{!selectedsetcon.last}" disabled="{!!selectedsetcon.hasNext}" title="Last page"/>
+           
+             <apex:outputText > {!Listsize}</apex:outputText>
+   </apex:panelGrid>
+            
+   </apex:pageBlock> 
+
+ 
+  </apex:form>
+</apex:page>

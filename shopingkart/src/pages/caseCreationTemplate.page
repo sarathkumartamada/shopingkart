@@ -1,0 +1,119 @@
+<apex:page standardController="case"  recordSetVar="cases" extensions="createCaseFromTemplate" >
+    <style>  
+     .glow{  
+        animation: flashBg 0.9s;  
+        -webkit-animation: flashBg 0.9s alternate infinite;  
+     }  
+     @keyframes flashBg  
+     {  
+       from {  
+           border: 3px solid #ff6161;  
+          }  
+       to {  
+           border: 3px solid #ffd324;  
+         }  
+     }  
+     @-webkit-keyframes flashBg /* Safari and Chrome */  
+     {  
+       from {  
+           border: 3px solid #ff6161;  
+          }  
+       to {  
+           border: 3px solid #ffd324;  
+           box-shadow: 0px 0px 50px 3px #e14f1c;  
+         }  
+     }  
+   </style> 
+    
+    
+    <vs:importvisualstrap theme="default" />
+    <apex:form ><vs:visualstrapblock > 
+    <vs:pageheader title="Template" subtitle="Template List" icon="file"/>
+    <vs:panel title="All Template" type="primary" id="allCases">
+    <apex:pageBlock >
+
+                    <apex:inputText value="{!Searchkey}" onkeyup="Search()"/> &nbsp; 
+                           <b>
+                             search
+                          </b>
+                    <apex:actionFunction name="Search" action="{!Search}" reRender="Temptable,grid"/>
+                    <apex:commandButton styleClass="btn btn-info btn-md" value="New Template" action="{!CreateNewTemplate}"/>&nbsp;&nbsp;
+                    &nbsp;&nbsp;
+                    &nbsp;&nbsp;
+                    <b>
+                    Filter Options Type</b>
+
+
+                    <apex:selectList value="{!Type}" size="1" label="Type">
+                    <apex:selectOptions value="{!Types}"/>
+                    <apex:actionSupport event="onchange" action="{!Search}" reRender="Temptable,grid"/>
+                    </apex:selectList>
+
+                     <b>Status
+                    </b><apex:selectList value="{!Status}" size="1" label="Status">
+                    <apex:selectOptions value="{!Statuses}"/>
+                    <apex:actionSupport event="onchange" action="{!Search}" reRender="Temptable,grid"/>
+                    </apex:selectList>
+                    <apex:actionFunction name="redirect"  oncomplete="refff()"/>
+            <apex:pageBlockTable value="{!Templates}"  var="Temp" id="Temptable">
+               
+               <apex:column headerValue="Actions">
+               <apex:commandlink value="Edit" styleClass="btn btn-warning btn-md"  action="{!editt}" onclick="redirect();">
+               <apex:param value="{!Temp.id}" name="column" assignTo="{!Myid}" ></apex:param></apex:commandlink>&nbsp;|&nbsp;
+               <apex:commandlink action="{!delet}" styleClass="btn btn-danger btn-md" value="delete" >
+               <apex:param value="{!Temp.id}" name="column" assignTo="{!Myid}" ></apex:param></apex:commandlink>
+               </apex:column>  
+                
+            
+              <apex:column > 
+              <apex:facet name="header">
+              <apex:commandlink action="{!Search}" value="Template " id="cmdSort">
+              <apex:param value="name" name="column" assignTo="{!sortExpression}" ></apex:param>
+              </apex:commandlink>
+              </apex:facet> 
+              <apex:commandlink action="{!create}" value="{!Temp.name}" styleClass="btn btn-success btn-md" style="text-decoration:none;padding:4px;" >
+         <!--     <apex:outputLink value="/500/e?{!$Setup.CaseIds__c.Status__c}={!Temp.Status__c}&retURL=apex/caseCreationTemplate&saveURL=apex/caseCreationTemplate">hello</apex:outputLink>-->
+               <apex:param value="{!Temp.id}" name="column" assignTo="{!Myid}" ></apex:param></apex:commandlink>
+              </apex:column>
+              
+
+              <apex:column >  
+               <apex:facet name="header">
+               <apex:commandLink action="{!Search}" value="Type"  reRender="Temptable">
+               <apex:param value="Type__c" name="column" assignTo="{!sortExpression}" ></apex:param>
+               </apex:commandLink>
+              </apex:facet> 
+                <apex:outputText value="{!Temp.Type__c}"/>
+                </apex:column>
+                <apex:column >  
+               <apex:facet name="header">
+               <apex:commandLink action="{!Search}" value="Status"  reRender="Temptable">
+               <apex:param value="Status__c" name="column" assignTo="{!sortExpression}" ></apex:param>
+               </apex:commandLink>
+              </apex:facet> 
+                <apex:outputText value="{!Temp.Status__c}"/>
+                </apex:column>
+              
+              
+              <apex:column value="{!Temp.CreatedById}" />
+              
+            </apex:pageBlockTable>
+            
+         
+            <apex:panelGrid columns="5" id="grid"  >
+            <apex:commandButton value="|<<" action="{!setcon.first}"  disabled="{!!setcon.hasPrevious}" title="First page"/>
+            <apex:commandButton value="<" action="{!setcon.previous}" disabled="{!!setcon.hasPrevious}" title="Previous page"/>
+            <apex:commandButton value=">" action="{!setcon.next}" disabled="{!!setcon.hasNext}" title="Next page"/>
+            <apex:commandButton value=">>|" action="{!setcon.last}" disabled="{!!setcon.hasNext}" title="Last page"/><div>
+            <apex:outputText >&nbsp;page&nbsp;{!(setcon.pageNumber)} --</apex:outputText>
+            <apex:outputText rendered="{!(setCon.pageNumber * setCon.pageSize) < setCon.ResultSize}" value="{!setCon.pageNumber * setCon.pageSize} Of {!setCon.ResultSize}"></apex:outputText>
+            <apex:outputText rendered="{!(setCon.pageNumber * setCon.pageSize) >= setCon.ResultSize}" value="{!setCon.ResultSize} Of {!setCon.ResultSize}"></apex:outputText></div>
+            </apex:panelGrid>   
+
+
+ 
+    </apex:pageBlock> 
+    </vs:panel>
+    </vs:visualstrapblock>
+</apex:form>
+</apex:page>

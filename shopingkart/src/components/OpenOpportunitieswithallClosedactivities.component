@@ -1,0 +1,12 @@
+<apex:component allowDML="true" controller="OpenOpportunitieswithallClosedactivities" access="global">
+<apex:dataTable value="{!Opportunities}" var="c">     
+            <apex:column headerValue="Opportunity Name">
+       <a href="https://ap2.salesforce.com/{!c.id}" id="theLink">{!c.name}</a>
+            </apex:column>
+           
+            <apex:column headerValue="Account" value="{!c.Accountid}"/>&nbsp;&nbsp;
+            <apex:column headerValue="Close Date" value="{!c.CloseDate}"/>&nbsp;&nbsp;
+            <apex:column headerValue="Stage" value="{!c.StageName}"/>
+        </apex:dataTable>
+ <p>    Total Records  {!Count} </p>
+</apex:component>

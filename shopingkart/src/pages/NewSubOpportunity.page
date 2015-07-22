@@ -1,0 +1,37 @@
+<apex:page standardController="opportunity"  extensions="myNewSubOpportunity"  action="{!currentId}" docType="html-5.0">
+    
+    <apex:form rendered="{!if(oldopp.Parent_Opportunity__c==null,true,false)}">
+        <apex:pageBlock title="Create New Sub Opportunity">
+              
+             
+              <apex:pageBlockSection >
+            submit   <apex:commandButton value="save" action="{!save}" rendered="{!if(subType==null,false,true)}"/><apex:commandButton value="please insert customer type in parent"  rendered="{!if(subType==null,true,false)}"/>
+               sub Opportunity List  <apex:selectList size="1" value="{!myType}" >
+                  <apex:selectOptions value="{!TypeList}"/>
+                  
+                 </apex:selectList>
+               
+         
+        StageName   <apex:selectList size="1" value="{!StageNameopp}" required="true">
+                  <apex:selectOptions value="{!stageList}"/>
+                  
+                 </apex:selectList>
+                 Opportunity Name <apex:inputText value="{!name}"/>
+            Probability     <apex:inputText value="{!probability}"/>
+            Close Date        <apex:input type="date" value="{!Closedate}" required="true"/>
+            NextStep        <apex:inputText value="{!myNextStep}"/>
+                 </apex:pageBlockSection>
+        </apex:pageBlock>
+        <apex:pageMessages />
+    
+    </apex:form>
+    <apex:form rendered="{!if(oldopp.Parent_Opportunity__c==null,false,true)}">
+    
+    <apex:pageBlock >
+    <apex:pageBlockSection >
+    you cannot create sub opportunity for a sub opportunity
+    </apex:pageBlockSection> 
+    </apex:pageBlock>
+    </apex:form>
+    
+</apex:page>

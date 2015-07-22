@@ -1,0 +1,2 @@
+Hello {!Opportunity.OwnerFullName} 
+Case {!Case.CaseNumber} updated to working click on link the view case https://ap2.salesforce.com/{!Case.Id}

@@ -1,0 +1,212 @@
+<apex:component >
+<!-- <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+       <title>Creating a Simple Parallax Scrolling Website</title>
+       <link rel="stylesheet" href="css/style.css"/>
+       <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+       <link href='http://fonts.googleapis.com/css?family=Wellfleet' rel='stylesheet' type='text/css'/>
+       <link href='http://fonts.googleapis.com/css?family=Wellfleet' rel='stylesheet' type='text/css'/>
+       <link href='http://fonts.googleapis.com/css?family=Arvo:400,700,400italic,700italic' rel='stylesheet' type='text/css'/>
+       <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'/>
+       <link href='http://fonts.googleapis.com/css?family=Goudy+Bookletter+1911' rel='stylesheet' type='text/css'/>
+
+    <style>
+    body{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+ 
+h1 {
+    font-family:"Arno";
+    font-weight:normal;
+    font-size: 55px;
+    text-align: center;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+ 
+h2 {
+   font-family:"Arvo";
+   font-weight: normal;
+   font-size: 40px;
+   text-align: center;
+   color: #fff;
+   margin: 0;
+    padding: 0;
+}
+ 
+h3 {
+   font-family: Oswald;
+   font-weight: normal;
+   font-size: 16px;
+   text-align: center;
+   margin: 5px 0;
+    padding: 0;
+    z-index: 1;
+    position: relative;
+}
+
+.center { margin: 0 auto; }
+.content{ margin: 0 auto; width: 960px; }
+.clear { clear: both; }
+
+#header {
+    width: 100%;
+    background: url('http://www.hdwallpapersimages.com/wp-content/uploads/images/Child-Girl-with-Sunflowers-Images.jpg');
+    height: 80px;
+    position: fixed;
+    margin-top: 30px;
+}
+ 
+#nav { width: 410px; float: right; margin-top: 20px; }
+#logo a { color: #fff; text-decoration: none; float: left; font-size: 30px; margin-top: 20px; color: #fff; font-family:"Wellfleet"; font-weight: bold; }
+#nav ul{
+    list-style: none;
+    display: block;
+    margin: 0 auto;
+    list-style: none;
+}
+ 
+#nav li{
+    margin-top: 9px;
+    float: left;
+    padding-left: 21px;
+}
+ 
+#nav li a { color: #fff; opacity:0.6; font-size: 16px; text-decoration: none; font-family: 'Wellfleet'; }
+#nav li a.active { color: #fff; opacity:1; border-bottom: 2px solid #fff; }
+#nav li a:hover { color: #fff; opacity:1;  }
+
+.quotes {
+ font-family: 'Goudy Bookletter 1911', serif;
+   font-weight: normal;
+   font-size: 30px;
+  text-align: left;
+  margin: 50px auto;
+}
+ 
+ .author_name_white { font-family:"Wellfleet";  margin: 70px 0 0 75px; color: #fff; font-size: 20px; }
+ .author_name_gray { font-family:"Wellfleet";  margin: 70px 0 0 75px; color: #94a4a4; font-size: 20px; }
+ .quotes_container { width: 800px; margin: 0 auto; }
+#christmas_tree { background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYWK091YW06jkSs5mNZh5CRQycBfIr2rOfU268a4wZ8E_HXpQFmg')no-repeat; width: 48px; height: 77px; margin: 0 auto; position: relative; bottom: -35px;}
+#divider { background: url('https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQHWmuYKIh7r1xQ0izEeW3moeSEdMS5dZAJMf_cNnRkpJBII86riQ')no-repeat; width: 300px; height: 35px; margin: 0px auto 27px auto; }
+#ribbon { background: url('../img/ribbon.png')no-repeat; width: 251px; height: 48px; margin: 0 auto;  display: block; position: relative; top: -38px; }
+#snowflakes1 { background: url('../img/snowflakes.png')no-repeat; width: 24px; height: 21px; margin: 0 auto;  display: block; position: relative; bottom: -54px; left: -102px; }
+#snowflakes2 { background: url('../img/snowflakes.png')no-repeat; width: 24px; height: 21px; margin: 0 auto;  display: block; position: relative; bottom: -33px;  right: -100px; }
+
+
+
+#slide1, #slide2{ width: 100%; }
+#slide1{
+    background:url('http://www.gettyimages.in/gi-resources/images/Homepage/Category-Creative/UK/UK_Creative_462809583.jpg') 50% 0 no-repeat fixed;
+    color: #fff;
+    height: 600px;
+    margin: 0;
+    padding: 200px 0 260px 0;
+    background-size: cover;
+}
+ 
+#slide2{
+    background-color: #fff;
+    color: #333333;
+    height: 300px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 200px 0;
+}
+ 
+#slide3{
+    background: url('http://clarklabs.org/images/carousel-image-6.jpg') 50% 0 no-repeat fixed;
+    color: #fff;
+    height: 600px;
+    padding: 170px 0 0 0;
+    background-size: cover;
+}
+ 
+#slide4{
+    background-color: #fff;
+    color: #333333;
+    height: 300px;
+    padding: 200px 0;
+}
+ 
+#slide5{
+    background: url('http://www.himandlui.com/wp-content/uploads/2015/01/clothing-subscription-for-men.jpg') 50% 0 no-repeat fixed;
+    height: 200px;
+    margin: 0 auto;
+    padding: 250px 0;
+    color: #fff;
+    background-size: cover;
+}
+
+#copyright  { color: #fff; font-family:"Wellfleet";  font-size: 14px; margin-top: 100px; text-align: center;  }
+#copyright  a { text-decoration: none; color: #fff;  }
+    </style>
+    
+    <script>
+    $(document).ready(function() {
+    $('a[href*=#]').each(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+    && location.hostname == this.hostname
+    && this.hash.replace(/#/,'') ) {
+    var $targetId = $(this.hash), $targetAnchor = $('[name=' + this.hash.slice(1) +']');
+    var $target = $targetId.length ? $targetId : $targetAnchor.length ? $targetAnchor : false;
+    if ($target) {
+    var targetOffset = $target.offset().top;
+    $(this).click(function() {
+                $("#nav li a").removeClass("active");
+                $(this).addClass('active');
+    $('html, body').animate({scrollTop: targetOffset}, 1000);
+    return false;
+    });
+    }
+    }
+    });
+     
+    });
+    
+    $(this).click(function() {
+            $("#nav li a").removeClass("active");
+            $(this).addClass('active');
+           $('html, body').animate({scrollTop: targetOffset}, 1000);
+           return false;
+         });
+      }
+    }
+  });
+});
+
+$('html, body').animate({scrollTop: targetOffset}, 1000);
+
+
+$(document).ready(function() {
+  $('a[href*=#]').each(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+    && location.hostname == this.hostname
+    && this.hash.replace(/#/,'') ) {
+ var $targetId = $(this.hash), $targetAnchor = $('[name=' + this.hash.slice(1) +']');
+ var $target = $targetId.length ? $targetId : $targetAnchor.length ? $targetAnchor : false;
+       if ($target) {
+ var targetOffset = $target.offset().top;
+    </script>
+    <body>
+    <header id="header">
+    <div>
+<div id="logo"><a href=""> PARALLAX </a></div>
+ 
+<nav id="nav">
+    <ul>
+    <li><a href="#slide1" title="Next Section" >Slide 1</a></li>
+    <li><a href="#slide2" title="Next Section">Slide 2</a></li>
+    <li><a href="#slide3" title="Next Section">Slide 3</a></li>
+    <li><a  href="#slide4" title="Next Section">Slide 4</a></li>
+    <li><a href="#slide5" title="Next Section">Slide 5</a></li>
+    </ul>
+</nav>
+</div>
+</header>
+<apex:componentBody />
+</body>--->
+<apex:componentBody />
+</apex:component>

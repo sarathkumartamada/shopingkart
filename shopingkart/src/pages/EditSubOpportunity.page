@@ -1,0 +1,31 @@
+<apex:page standardController="Opportunity" tabStyle="opportunity">
+
+
+    <apex:form >
+        <apex:pageBlock >
+        <apex:pageBlockButtons > <apex:commandButton value="save" action="{!save}"/> </apex:pageBlockButtons>
+            <apex:pageBlockSection >
+                <apex:inputField value="{!Opportunity.Name}"/>
+                <apex:inputField value="{!opportunity.StageName}"/>
+                
+                <apex:outputField value="{!opportunity.SubOpportunityType__c}"/>
+                <apex:inputField value="{!opportunity.IsPrivate}"/>
+                <apex:inputField value="{!opportunity.Campaignid}"/>
+               
+                <apex:outputField value="{!opportunity.Parent_Opportunity__c}"/>
+                <apex:inputField value="{!opportunity.Contract}"/>
+                <apex:inputField value="{!opportunity.CloseDate}"/>
+                <apex:inputField value="{!opportunity.Description}"/>
+                <apex:inputField value="{!opportunity.ExpectedRevenue}"/>
+                <apex:inputField value="{!opportunity.LeadSource}"/>
+                <apex:inputField value="{!opportunity.NextStep}"/>
+                <apex:inputField value="{!opportunity.Ownerid}"/>
+                
+                
+            </apex:pageBlockSection>
+        
+        </apex:pageBlock>
+    
+    </apex:form>
+
+</apex:page>

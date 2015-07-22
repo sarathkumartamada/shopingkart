@@ -1,0 +1,17 @@
+<apex:page standardController="contact">
+
+<apex:form >
+        <apex:pageBlock >
+ 
+         <apex:inputText style="Style" value="{!contact.name}"/>
+                       <apex:pageBlockSection >    
+                             <apex:pageBlockSectionItem >
+                             <apex:outputText >parent</apex:outputText>
+                            
+                             <c:AutoComplete allowClear="true" importJquery="true" labelField="name" SObject="User" valueField="id" targetField="{!contact.Ownerid}" style="width:200px"/>
+                             </apex:pageBlockSectionItem> 
+                       </apex:pageBlockSection>    
+        </apex:pageBlock>                 
+</apex:form>
+
+</apex:page>

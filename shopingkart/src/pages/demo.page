@@ -1,0 +1,78 @@
+<apex:page >
+
+    <apex:remoteObjects >
+
+          <apex:remoteObjectModel name="Account" fields="Name" jsShorthand="ac">
+
+                <apex:remoteObjectField name="Type" jsShorthand="ty"></apex:remoteObjectField>
+
+        </apex:remoteObjectModel>
+
+    </apex:remoteObjects>
+    
+    
+    <script type="text/javaScript">
+
+        function retrieveAccount(){
+
+            clear();                     //calling clear method to clear the existing records if shown in table
+
+            var t = document.getElementById("srch").value;      //getting the value from input box
+
+            var acc = new SObjectModel.Account();                 // this defines the object on which we going to perform operations
+
+
+
+            var acnt = acc.retrieve({where: {ty: {eq: t }},limit : 100},
+
+                       function(err,records){
+
+                           if(err){
+
+                               alert("Encountered Error"+err.message);
+
+                           }
+
+                           else{
+
+                               records.forEach(
+
+                                   function(record){
+
+                                       var name = record.get("Name");
+
+                                       var row = document.createElement("tr");
+
+                                       row.appendChild(document.createTextNode(name));
+
+                                       var table = document.getElementById("accountTable");
+
+                                       table.appendChild(row);
+
+                                }   
+
+                               );
+
+                           }
+
+                        }
+
+            );
+
+        }
+
+        function clear(){   // clear function to clear the existing records on page.
+
+            document.getElementById("accountTable").innerHTML = "";
+
+        }
+
+        </script>
+
+Enter account type here:<input id="srch"></input> 
+
+    <button onclick="retrieveAccount()">Search</button> 
+
+    <table id="accountTable" border="1" cellspacing="10"></table> 
+
+ </apex:page>

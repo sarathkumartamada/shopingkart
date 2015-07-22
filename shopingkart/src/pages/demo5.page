@@ -1,0 +1,841 @@
+<apex:page controller="accountForm" docType="html-5.0" standardStylesheets="false" sidebar="false"  showHeader="false">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <apex:stylesheet value="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
+
+        <style>
+        
+
+        
+        </style>
+        
+        
+        
+        <script>
+
+        
+        function fillBrList(ele)
+        {
+        if(!ele.children.checked||ele.children.checked=='false')
+        {
+        $(".wholeOutfit").collapse('show');
+        ele.children.checked='true';
+        alert('checked');
+        }
+        else
+        {
+         $(".wholeOutfit").collapse('hide');
+        ele.children.checked='false';
+        alert('unchecked'+ele.children.checked);
+        }
+        }
+        
+        
+        
+        
+        function myFunction(ele, Outfitvalue) {
+        
+        
+        var inputs=document.getElementsByTagName('input');
+        for(var x = 0; x < inputs.length; x++) 
+        {
+            
+            if(inputs[x].id.indexOf('OutfitBox') >= 0) {
+                
+                var myval=inputs[x].value;
+                        if(!ele.children.checked||ele.children.checked=='false')
+                        {
+                        $(".wholeOutfit").collapse('show');
+                        ele.children.checked='true';
+                        inputs[x].value =inputs[x].value+Outfitvalue+';'
+                        alert('checked');
+                        }
+                        else
+                        {
+                         $(".wholeOutfit").collapse('hide');
+                        ele.children.checked='false';
+                        alert('unchecked'+ele.children.checked);
+                        }
+            }
+        }
+        
+        
+    }
+        function myFunction2(ele, Outfitvalue) {
+        
+        
+        var inputs=document.getElementsByTagName('input');
+        for(var x = 0; x < inputs.length; x++) 
+        {
+            
+            if(inputs[x].id.indexOf('WorkStyle') >= 0) {
+                
+                var myval=inputs[x].value;
+                if(myval.includes(Outfitvalue))
+                {
+                    alert('hello');
+                    myval.replace(Outfitvalue+';',''); 
+                    inputs[x].value =myval;}
+                else
+                {
+                    
+                    ele.src="{!$Resource.checkRed}";
+                    inputs[x].value =inputs[x].value+Outfitvalue+';'
+                }
+            }
+        }
+        
+        
+    }
+    
+    function myFunction3(ele, Outfitvalue) {
+        
+        
+        var inputs=document.getElementsByTagName('input');
+        for(var x = 0; x < inputs.length; x++) 
+        {
+            
+            if(inputs[x].id.indexOf('preferredShirtFit') >= 0) {
+                
+                var myval=inputs[x].value;
+                if(myval.includes(Outfitvalue))
+                {
+                    alert('hello');
+                    myval.replace(Outfitvalue+';',''); 
+                    inputs[x].value =myval;}
+                else
+                {
+                    
+                    ele.src="{!$Resource.checkRed}";
+                    inputs[x].value =inputs[x].value+Outfitvalue+';'
+                }
+            }
+        }
+        
+        
+    }
+    
+    function myFunction4(ele, Outfitvalue) {
+        
+        
+        var inputs=document.getElementsByTagName('input');
+        for(var x = 0; x < inputs.length; x++) 
+        {
+            
+            if(inputs[x].id.indexOf('preferredTrouserfit') >= 0) {
+                
+                var myval=inputs[x].value;
+                if(myval.includes(Outfitvalue))
+                {
+                    alert('hello');
+                    myval.replace(Outfitvalue+';',''); 
+                    inputs[x].value =myval;}
+                else
+                {
+                    
+                    ele.src="{!$Resource.checkRed}";
+                    inputs[x].value =inputs[x].value+Outfitvalue+';'
+                }
+            }
+        }
+        
+        
+    }
+    
+    function myFunction5(ele, Outfitvalue) {
+        
+        
+        var inputs=document.getElementsByTagName('input');
+        for(var x = 0; x < inputs.length; x++) 
+        {
+            
+            if(inputs[x].id.indexOf('Brand') >= 0) {
+                
+                var myval=inputs[x].value;
+                if(myval.includes(Outfitvalue))
+                {
+                    alert('hello');
+                    myval.replace(Outfitvalue+';',''); 
+                    inputs[x].value =myval;}
+                else
+                {
+                    
+                    ele.src="{!$Resource.checkRed}";
+                    inputs[x].value =inputs[x].value+Outfitvalue+';'
+                }
+            }
+        }
+        
+        
+    }
+    
+     window.onload=function(){
+        $(".home").collapse('show');
+        };
+    
+     function navbar(para){
+        
+        if(para=='home')
+        {
+        $(".outfit").collapse('hide');
+        $(".style").collapse('hide');
+        $(".profile").collapse('hide');
+        $(".home").collapse('show');
+        }
+        else if(para=='Outfits')
+                {
+                $(".outfit").collapse('show');
+                $(".style").collapse('hide');
+                $(".profile").collapse('hide');
+                $(".home").collapse('hide');
+                }
+            else if(para=='Style')
+                    {
+                    
+                    $(".outfit").collapse('hide');
+                    $(".style").collapse('show');
+                    $(".profile").collapse('hide');
+                    $(".home").collapse('hide');
+                    }
+               else
+                {
+                    $(".outfit").collapse('hide');
+                    $(".style").collapse('hide');
+                    $(".profile").collapse('show');
+                    $(".home").collapse('hide');
+                    } 
+            };
+    
+    </script>
+    <style>
+
+    div.transbox
+    {
+      margin: 30px;
+      
+      background-color: #ffffff;
+      border: 0px solid black;
+      height:200px;
+      width:200px;
+      opacity:0.4;
+      filter:alpha(opacity=60); /* For IE8 and earlier */
+    }
+    div.transbox p
+    {
+ 
+      margin: 5%;
+      font-weight: bold;
+      color: #000000;
+    }
+    </style>
+    
+    
+    <c:importvisualstrap />
+    <c:visualstrapblock >
+        <c:navbar brand="himandlui"  inverse="false" type="fixed-top">  
+            
+            <b> </b>{!Myaccount.Name}
+            
+            <a class="btn btn-success btn-md"  href="/apex/login">Logout</a><a class="btn btn-info btn-md" onclick="fillmyProductids()"><image src="{!$Resource.cart}" width="25px" height="25"/> Cart <span id="badgeid" class="badge "></span></a>
+        </c:navbar> 
+        
+        
+         <nav class="navbar navbar-default">
+                <div class="btn-group" role="group" aria-label="...">
+                  <button type="button" class="btn btn-info" onclick="navbar('home')">Home</button>
+                  <button type="button" class="btn btn-info" onclick="navbar('Outfits')">Outfits</button>
+                  <button type="button" class="btn btn-info" onclick="navbar('Style')">Style</button>
+                  <button type="button" class="btn btn-info" onclick="navbar('profile')">profile</button>
+                </div>
+         </nav>       
+        
+         <div id="home" class="collapse home">
+         
+
+         <c:Products2 accountid="00128000003eb7A"/>
+              <div>
+                   <table border="0">
+                         <tr><apex:pageMessages ></apex:pageMessages>
+                             <td>   <apex:image url="{!$Resource.wardrobe}" >
+                               <div style="color: #00000; text-align:center;">
+                                 
+                                <div style="color: #00000; text-align:center;"><h3>Welcome {!Myaccount.Name}</h3>
+                                </div>
+                                 
+                                <h3 class="ls-l" style="top:188px;left:949px;white-space: nowrap;"/>
+                                <div style="color: #00000; text-align:center;"><div>
+                                 
+                                </div> </div>  
+                              </div>
+                              </apex:image>
+                             </td> 
+                         </tr>      
+                    </table>
+             </div>
+
+         </div>
+        
+        
+        
+             <apex:form id="outfit" styleClass="collapse outfit">  
+                  <div class="container-fluid">
+                   
+
+                               <div class="tab-content">
+                                    <div id="Outfit" class="tab-pane fade in active">
+                                        
+                                        <!--        <apex:pageBlock title="History">
+                                                    <apex:pageBlockTable styleClass="table" value="{!myOldoutfit}" var="outfit">
+                                                       <apex:column style="width:150px,height:150px"  value="{!outfit.Product__r.Demo__c}"/>
+                                                        <apex:column style="width:150px,height:150px"  value="{!outfit.Product2__r.Demo__c}"/>
+                                                        <apex:column style="width:150px,height:150px"  value="{!outfit.Product3__r.Demo__c}"/>
+                                                        <apex:column style="width:150px,height:150px"  value="{!outfit.Product4__r.Demo__c}"/>
+                                                        <apex:column style="width:150px,height:150px"  value="{!outfit.Product5__r.Demo__c}"/>
+                                                        <apex:column style="width:150px,height:150px"  value="{!outfit.Product5__r.Demo__c}"/>
+                                                    </apex:pageBlockTable>
+                                                </apex:pageBlock>
+                                                
+                                               
+                                                    <apex:pageBlock title="Assigned">
+                                                        <apex:pageBlockTable styleClass="table" value="{!myoutfit}" var="outfit" columns="8" >
+                                                            <apex:column headerValue="select">
+                                                            <apex:commandlink styleClass="btn btn-info" action="{!updateoutfit}" value="Like" >
+                                                             <apex:param assignTo="{!result}" name="Like" value="Like"/>
+                                                             <apex:param name="outfitid" value="{!outfit.id}"/>
+                                                            </apex:commandlink>
+                                                            <apex:commandlink styleClass="btn btn-warning" action="{!updateoutfit}" value="DisLike">
+                                                             <apex:param assignTo="{!result}" name="Like" value="DisLike"/>
+                                                             <apex:param name="outfitid" value="{!outfit.id}"/>
+                                                            </apex:commandlink>                                                            
+                                                            <apex:commandlink styleClass="btn btn-success" action="{!updateoutfit}" value="send">
+                                                             <apex:param assignTo="{!result}" name="Like" value="send"/>
+                                                             <apex:param name="outfitid" value="{!outfit.id}"/>
+                                                            </apex:commandlink>                                                            
+                                                            </apex:column> 
+
+                                                       
+                                                          <apex:column style="width:150px,height:150px"  value="{!outfit.Product__r.Demo__c}"/>
+                                                            <apex:column style="width:150px,height:150px"  value="{!outfit.Product2__r.Demo__c}"/>
+                                                            <apex:column style="width:150px,height:150px"  value="{!outfit.Product3__r.Demo__c}"/>
+                                                            <apex:column style="width:150px,height:150px"  value="{!outfit.Product4__r.Demo__c}"/>
+                                                            <apex:column style="width:150px,height:150px"  value="{!outfit.Product5__r.Demo__c}"/>
+                                                            <apex:column style="width:150px,height:150px"  value="{!outfit.Product5__r.Demo__c}"/>
+
+                                                        </apex:pageBlockTable>
+                                                     </apex:pageBlock>-->
+                                     </div>
+                                  </div>
+ 
+                              </div>     
+                     </apex:form>
+
+        <apex:form id="style" styleClass="collapse style">
+            
+            
+            <div class="container-fluid ">
+                <ul class="nav nav-pills">
+                    <li class="active"><a data-toggle="pill" href="#home">Box</a></li>
+                    <li><a data-toggle="pill" href="#menu1">Style </a></li>
+                    <li><a data-toggle="pill" href="#menu2">Shirt Type </a></li>
+                    <li><a data-toggle="pill" href="#menu3">Trouser Type </a></li>
+                    <li><a data-toggle="pill" href="#menu4">Dimensions </a></li>
+                    <li><a data-toggle="pill" href="#menu5">Brand</a></li>
+                    
+                </ul>
+                
+                
+                
+                <div class="tab-content">
+                    <div id="home" class="tab-pane fade in active">
+                        
+                        
+                        <div data-role="page" id="p1">
+                            <div data-role="header">
+                                <h3>Prefer You box content</h3>
+                            </div><!-- /header -->
+                            <div data-role="content">
+                            <div class="progress">
+                              <div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 10%;">
+                                10%
+                              </div>
+                            </div>
+                                <apex:pageBlock >
+                                    <apex:inputtext id="OutfitBox" value="{!OutfitBox}"/>
+                                    <apex:inputhidden id="WorkStyle" value="{!WorkStyle}"/>
+                                    <apex:inputhidden id="preferredShirtFit" value="{!preferredShirtFit}"/>
+                                    <apex:inputhidden id="preferredTrouserfit" value="{!preferredTrouserfit}"/>
+                                    <apex:inputhidden id="Brand" value="{!Brand}"/>
+                                    <apex:pageMessages ></apex:pageMessages>
+                                    
+                                    <table border="0">
+                                        
+                                        
+                                        
+                                        
+                                        <tr>
+                                            
+                                            <td> 
+                                            
+                                                 <style> div.backgroundwholeOutfit{background: url({!$Resource.wholeOutfit}) ;height:300px;width:300px;border: 1px solid black;background-repeat: no-repeat;}</style> 
+                                                <div align="center"> wholeOutfit </div> 
+                                                <div class="backgroundwholeOutfit">
+                                                <div class="transbox" onclick="myFunction(this,'wholeOutfit')">
+                                                <input type="checkbox" style="display:none" checked="none"  name="brand" value="Boss"/>
+                                                <p><div  class='collapse wholeOutfit'><apex:image url="{!$Resource.checkRed}" width="200"  height="200" style="margin:20px;" /></div></p>
+                                                </div>
+                                                </div>
+                                                
+                                               
+                                            </td>
+                                            <td> 
+                                                <div align="center"> sweater </div>
+                                                
+                                                <apex:image url="{!$Resource.sweater}" width="300" height="300" style="margin:20px;" id="sweater" onclick="myFunction(this,'sweater')"/> 
+                                                
+                                            </td>
+                                            <td> 
+                                                <div align="center"> shirt </div>
+                                                
+                                                <apex:image url="{!$Resource.shirt}" width="300" height="300" style="margin:20px;" id="shirt" onclick="myFunction(this,'shirt')"/>   
+                                                
+                                            </td>
+                                            <td> 
+                                                <div align="center"> Tie </div>
+                                                
+                                                
+                                                <apex:image url="{!$Resource.Tie}" width="300" height="300" style="margin:20px;" id="Tie" onclick="myFunction(this,'Tie')"/>  
+                                                
+                                            </td>
+                                            
+                                            <td> 
+                                                <div align="center"> scarves </div> 
+                                                
+                                                <apex:image url="{!$Resource.scarves}" width="300"  height="300" style="margin:20px;" id="scarves" onclick="myFunction(this,'scarves')"/> 
+                                                
+                                            </td>
+                                        </tr>
+                                        <tr>                                                        
+                                            <td> 
+                                                <div align="center"> Wallet </div>
+                                                
+                                                <apex:image url="{!$Resource.Wallet}" width="300" height="300" style="margin:20px;" id="Wallet" onclick="myFunction(this,'Wallet')"/> 
+                                                
+                                            </td>
+                                            <td> 
+                                                <div align="center"> belt</div>
+                                                
+                                                <apex:image url="{!$Resource.belt}" width="300" height="300" style="margin:20px;" id="belt" onclick="myFunction(this,'belt')"/>   
+                                                
+                                            </td>
+                                            <td> 
+                                                <div align="center"> shoes </div>
+                                                
+                                                <apex:image url="{!$Resource.shoes}" width="300" height="300" style="margin:20px;" id="shoes" onclick="myFunction(this,'shoes')"/>  
+                                                
+                                            </td>
+                                            
+                                            <td> 
+                                                <div align="center"> Trouser </div>
+                                                
+                                                <apex:image url="{!$Resource.Trouser}" width="300" height="300" style="margin:20px;" id="Trouser" onclick="myFunction(this,'Trouser')"/>  
+                                                
+                                            </td>
+                                            <td> 
+                                                <div align="center"> Jacket </div>
+                                                
+                                                <apex:image url="{!$Resource.Jacket}" width="300" height="300" style="margin:20px;" id="Jacket" onclick="myFunction(this,'Jacket')"/>  
+                                                
+                                            </td>
+                                            
+                                        </tr>
+                                    </table>
+                                </apex:pageBlock> <br/>
+                                
+                            </div>
+                        </div>
+                        
+                        
+                    </div>
+                    
+                    <div id="menu1" class="tab-pane fade">
+                        
+                        <div data-role="page" id="p2">
+                            <div data-role="header">
+                                <h3>Prefered Style</h3>
+                            </div><!-- /header -->
+                            <div data-role="content">
+                             <div class="progress">
+                              <div class="progress-bar" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 30%;">
+                                30%
+                              </div>
+                            </div>
+                                <apex:pageBlock >
+                                    
+                                    
+                                    
+                                    <table border="0">
+                                        <tr>
+                                            
+                                            <td> 
+                                                <div align="center"> Casual </div> 
+                                                
+                                                <apex:image url="{!$Resource.WSCasuals}" width="300"  height="300" style="margin:20px;"  id="Casuals" onclick="myFunction2(this,'Casuals')"/> 
+                                                
+                                            </td>
+                                            <td> 
+                                                <div align="center"> Formal</div>
+                                                
+                                                <apex:image url="{!$Resource.WSFormal}" width="300" height="300" style="margin:20px;"  id="Formal" onclick="myFunction2(this,'Formal')"/> 
+                                                
+                                            </td>
+                                            <td> 
+                                                <div align="center"> Business</div>
+                                                
+                                                <apex:image url="{!$Resource.WSBusiness}" width="300" height="300" style="margin:20px;"  id="Business" onclick="myFunction2(this,'Business')"/>   
+                                                
+                                            </td>
+                                            <td> 
+                                                <div align="center"> Trendy</div>
+                                                
+                                                <apex:image url="{!$Resource.WSTrendy}" width="300" height="300" style="margin:20px;"  id="Trendy" onclick="myFunction2(this,'Trendy')"/>  
+                                                
+                                            </td>
+                                            
+                                            
+                                        </tr>
+                                    </table>
+                                    
+                                </apex:pageBlock> <br/>
+                              
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    <div id="menu2" class="tab-pane fade">
+                        <h3>Menu 3</h3>
+                        <div data-role="page" id="p2">
+                            <div data-role="header">
+                                <h3>Shirt fit</h3>
+                            </div><!-- /header -->
+                            <div data-role="content">
+                            <div class="progress">
+                              <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%;">
+                                50%
+                              </div>
+                            </div>                            
+                                <apex:pageBlock >
+                                    
+                                    
+                                      <table border="0">
+                                        <tr>
+                                            
+                                            <td> 
+                                                <div align="center"> Slim </div> 
+                                                
+                                                <apex:image url="{!$Resource.SFSlim}" width="300"  height="300" style="margin:20px;" id="Slim" onclick="myFunction4(this,'Slim')"/> 
+                                                
+                                            </td>
+                                            <td> 
+                                                <div align="center"> Relaxed </div>
+                                                
+                                                <apex:image url="{!$Resource.SFRelaxed}" width="300" height="300" style="margin:20px;" id="Relaxed" onclick="myFunction4(this,'Relaxed')"/> 
+                                                
+                                            </td>
+                                            <td> 
+                                                <div align="center"> Classic</div>
+                                                
+                                                <apex:image url="{!$Resource.SFClassic}" width="300" height="300" style="margin:20px;" id="Classic" onclick="myFunction4(this,'Classic')"/>   
+                                                
+                                            </td>
+                                            
+                                            
+                                            
+                                        </tr>
+                                    </table>
+                                  
+                                    
+                                    <apex:pageBlockSection >
+                                      
+                                    </apex:pageBlockSection>
+                                </apex:pageBlock> <br/>
+                            
+                            </div>
+                        </div>
+                        
+                    </div>
+                    
+                    
+                    
+                    <div id="menu3" class="tab-pane fade">
+                        <h3>Menu 4</h3>
+                        <div data-role="page" id="p3">
+                            <div data-role="header">
+                                <h3>Preferred fit</h3>
+                            </div><!-- /header -->
+                            <div data-role="content">
+                            <div class="progress">
+                              <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;">
+                                70%
+                              </div>
+                            </div>                            
+                                <apex:pageBlock >
+                                      
+                                    <table border="0">
+                                        <tr>
+                                            
+                                            <td> 
+                                                <div align="center"> Relaxed </div> 
+                                                
+                                                <apex:image url="{!$Resource.TFRelaxed}" width="300"  height="300" style="margin:20px;" id="Relaxed" onclick="myFunction3(this,'Relaxed')"/> 
+                                                
+                                            </td>
+                                            <td> 
+                                                <div align="center"> Regular </div>
+                                                
+                                                <apex:image url="{!$Resource.TFRegular}" width="300" height="300" style="margin:20px;" id="Regular" onclick="myFunction3(this,'Regular')"/> 
+                                                
+                                            </td>
+                                            <td> 
+                                                <div align="center"> Slim </div>
+                                                
+                                                <apex:image url="{!$Resource.TFSlim}" width="300" height="300" style="margin:20px;" id="Slim" onclick="myFunction3(this,'Slim')"/>   
+                                                
+                                            </td>
+                                            
+                                            
+                                        </tr>
+                                    </table>
+                                    
+                                  
+                                    
+                                    <apex:pageBlockSection >
+                                      
+                                    </apex:pageBlockSection>
+                                </apex:pageBlock> <br/>
+                               
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <div id="menu4" class="tab-pane fade">
+                        <h3>Menu 5</h3>
+                        <div data-role="page" id="p4">
+                            <div data-role="header">
+                                <h3>Please select budject and Diemensions</h3>
+                            </div><!-- /header -->
+                            <div data-role="content">
+                            <div class="progress">
+                              <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 85%;">
+                                85%
+                              </div>
+                            </div>                            
+                                <apex:pageBlock >
+                                    
+                                    <!--       <table border="0">
+<tr>
+
+<td> 
+<div align="center"> Casual </div> 
+
+<apex:image url="{!$Resource.WSCasuals}" width="300"  height="300" style="margin:20px;" onmouseup="Casual"/> 
+
+</td>
+<td> 
+<div align="center"> Formal</div>
+
+<apex:image url="{!$Resource.WSFormal}" width="300" height="300" style="margin:20px;"/> 
+
+</td>
+<td> 
+<div align="center"> Business</div>
+
+<apex:image url="{!$Resource.WSBusiness}" width="300" height="300" style="margin:20px;"/>   
+
+</td>
+<td> 
+<div align="center"> Trendy</div>
+
+<apex:image url="{!$Resource.WSTrendy}" width="300" height="300" style="margin:20px;"/>  
+
+</td>
+
+
+</tr>
+</table>--->
+                                    
+                                    <apex:pageBlockSection >
+                                        <apex:selectList styleClass="form-control" value="{!Budjet}" size="1" label="Budjet">
+                                            <apex:selectOptions value="{!Types}"/>
+                                        </apex:selectList>
+                                        <apex:selectList styleClass="form-control" value="{!COLLAR}" size="1" label="COLLAR">
+                                            <apex:selectOptions value="{!COLLARs}"/>
+                                        </apex:selectList>
+                                        <apex:selectList styleClass="form-control" value="{!HEIGHT}" size="1" label="HEIGHT">
+                                            <apex:selectOptions value="{!HEIGHTs}"/>
+                                        </apex:selectList>
+                                        <apex:selectList styleClass="form-control" value="{!JACKET}" size="1" label="JACKET">
+                                            <apex:selectOptions value="{!JACKETs}"/>
+                                        </apex:selectList>
+                                        <apex:selectList styleClass="form-control" value="{!SHOES}" size="1" label="SHOES">
+                                            <apex:selectOptions value="{!SHOESs}"/>
+                                        </apex:selectList>
+                                        <apex:selectList styleClass="form-control" value="{!TopSize}" size="1" label="TopSize">
+                                            <apex:selectOptions value="{!TopSizes}"/>
+                                        </apex:selectList>
+                                        <apex:selectList styleClass="form-control" value="{!WAIST}" size="1" label="WAIST">
+                                            <apex:selectOptions value="{!WAISTs}"/>
+                                        </apex:selectList>
+                                    </apex:pageBlockSection>
+                                    
+                                </apex:pageBlock> <br/>
+                               
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    
+                    <div id="menu5" class="tab-pane fade">
+                        <h3>Menu 5</h3>
+                        
+                        
+                        <div data-role="page" id="p5">
+                            <div data-role="header">
+                                <h3>Brand</h3>
+                            </div><!-- /header -->
+                            <div data-role="content">
+                            <div class="progress">
+                              <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                                100%
+                              </div>
+                            </div>                            
+                                <apex:pageBlock >
+                                    
+                                    <table border="0">
+                                        <tr>
+                                            
+                                            <td> 
+                                                <div align="center"> Casual </div> 
+                                                
+                                                <apex:image url="{!$Resource.BRBarbour}" width="200"  height="200" style="margin:20px;" id="Barbour" onclick="myFunction5(this,'Barbour')"/> 
+                                                
+                                            </td>
+                                            <td> 
+                                                <div align="center"> Formal</div>
+                                                
+                                                <apex:image url="{!$Resource.BRBoss}" width="200" height="200" style="margin:20px;" id="Boss" onclick="myFunction5(this,'Boss')"/> 
+                                                
+                                            </td>
+                                            <td> 
+                                                <div align="center"> Business</div>
+                                                
+                                                <apex:image url="{!$Resource.BRFredperry}" width="200" height="200" style="margin:20px;" id="redperry" onclick="myFunction5(this,'redperry')"/>   
+                                                
+                                            </td>
+                                            <td> 
+                                                <div align="center"> Trendy</div>
+                                                
+                                                <apex:image url="{!$Resource.BRGant}" width="200" height="200" style="margin:20px;" id="Gant" onclick="myFunction5(this,'Gant')"/>  
+                                                
+                                            </td>
+                                            
+                                            <td> 
+                                                <div align="center"> Trendy</div>
+                                                
+                                                <apex:image url="{!$Resource.BRGap}" width="200" height="200" style="margin:20px;" id="Gap" onclick="myFunction5(this,'Gap')"/>  
+                                                
+                                            </td>
+                                            <td> 
+                                                <div align="center"> Trendy</div>
+                                                
+                                                <apex:image url="{!$Resource.BRHackett}" width="200" height="200" style="margin:20px;" id="Hackett" onclick="myFunction5(this,'Hackett')"/>  
+                                                
+                                            </td>
+                                            
+                                            <tr>   
+                                        </tr>         
+                                        
+                                        <td> 
+                                            <div align="center"> Trendy</div>
+                                            <apex:image url="{!$Resource.BRLevis}" width="200" height="200" style="margin:20px;" id="Levis" onclick="myFunction2(this,'Levis')"/>  
+                                            
+                                        </td>
+                                        <td> 
+                                            <div align="center"> Trendy</div>
+                                            <apex:commandLink >
+                                                <apex:param assignTo="{!Preferrence[0]}" name="Trendy"  value="Trendy"/>
+                                                <apex:image url="{!$Resource.BRPaulsmith}" width="200" height="200" style="margin:20px;" id="Paulsmith" onclick="myFunction5(this,'Paulsmith')"/>  
+                                            </apex:commandlink>
+                                        </td>
+                                        
+                                        <td> 
+                                            <div align="center"> Trendy</div>
+                                            
+                                            
+                                            <apex:image url="{!$Resource.BRRalphLauren}" width="200" height="200" style="margin:20px;" id="RalphLauren" onclick="myFunction5(this,'RalphLauren')"/>  
+                                            
+                                        </td>
+                                        <td> 
+                                            <div align="center"> Trendy</div>
+                                            
+                                            <apex:image url="{!$Resource.BRReiss}" width="200" height="200" style="margin:20px;" id="Reiss" onclick="myFunction5(this,'Reiss')"/>  
+                                            
+                                        </td>        
+                                        <td> 
+                                            <div align="center"> Trendy</div>
+                                            
+                                            <apex:image url="{!$Resource.BRTedbaker}" width="200" height="200" style="margin:20px;" id="Tedbaker" onclick="myFunction5(this,'Tedbaker')"/>  
+                                            
+                                        </td>
+                                        <td> 
+                                            <div align="center"> Trendy</div>
+                                          
+                                            <apex:image url="{!$Resource.BRTommyhilfiger}" width="200" height="200" style="margin:20px;" id="Tommyhilfiger" onclick="myFunction5(this,'Tommyhilfiger')"/>  
+                                            
+                                            
+                                        </td>
+                                        
+                                    </tr>
+                                </table>
+                                
+                                <apex:pageBlockSection >
+                                    
+                                    <apex:pageMessages ></apex:pageMessages>
+                                </apex:pageBlockSection>
+                            </apex:pageBlock> <br/>
+                           
+                            <apex:commandButton value="Update" action="{!addstyle}" oncomplete="$('.collapse').collapse('hide');"/>
+                        </div>
+                    </div>
+                </div>  
+                      
+        </div>
+     </div>   
+        
+    </apex:form>    
+    
+     <div id="home" class="collapse profile">
+       <apex:form style="collapse profile">
+           <apex:pageBlock > 
+             <apex:commandButton value="Edit"/>
+                 <apex:outputPanel styleClass="form-group" id="detail">
+                     <apex:detail subject="{!Myaccount.id}"/>
+                </apex:outputPanel>
+           </apex:pageBlock>
+       </apex:form>
+      </div>   
+     
+       <c:navbar brand="Balakrishna" inverse="false" type="fixed-bottom" layout="none">  
+            <center>  
+                <apex:outputPanel styleClass="text-muted" style="margin:20px;font-size:130%" layout="block">  
+                    <c:glyph icon="bullhorn"/>
+                </apex:outputPanel>  
+            </center>  
+        </c:navbar> 
+        
+
+</c:visualstrapblock>
+</apex:page>

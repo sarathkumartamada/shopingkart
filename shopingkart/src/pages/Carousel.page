@@ -1,0 +1,48 @@
+<apex:page standardController="Account" recordSetVar="Accounts" standardStylesheets="false" sidebar="false" showHeader="false">
+ <head>
+         <!-- Bootstrap -->
+         <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet" media="screen"/>
+         <link href="//getbootstrap.com/examples/signin/signin.css" rel="stylesheet" media="screen"/>
+         <title>BootStrapV3 on Visualforce Page by Oyecode</title>
+  </head>
+  
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+  
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+    <li data-target="#myCarousel" data-slide-to="3"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+ <!-- <apex:repeat value="{!Accounts}" var="acc">
+    <div class="item active">
+     <apex:detail />
+    </div>
+  </apex:repeat>-->
+    <div class="item">
+      hello
+    </div>
+
+    <div class="item">
+    hau
+    </div>
+
+    <div class="item">
+    ola
+    </div>
+  </div>
+
+  <!-- Left and right controls -->
+  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+</apex:page>

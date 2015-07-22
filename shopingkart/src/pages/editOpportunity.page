@@ -1,0 +1,29 @@
+<apex:page standardController="Opportunity">
+
+        <apex:form >
+        
+            <apex:pageblock >
+                <apex:pageBlockSection >
+                <apex:inputField value="{!opportunity.name}" />
+            </apex:pageBlockSection>
+            </apex:pageblock>
+            
+            
+            
+        </apex:form>
+<script>
+g_calendarObject = new JsDatePick({
+        useMode:1,
+        isStripped:true,
+        target:"aFieldId",
+      cellColorScheme:"armygreen"
+    });
+    
+    g_calendarObject.setOnSelectedDelegate(function(){
+        var obj = g_calendarObject.getSelectedDay();
+    
+        alert("a date was just selected and the date is : " + obj.day + "/" + obj.month + "/" + obj.year);
+    })
+
+</script>
+</apex:page>

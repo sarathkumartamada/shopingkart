@@ -1,0 +1,36 @@
+<apex:component allowDML="true" controller="Closedwonopportunitiesinlastweek" access="global">
+
+<style>
+
+p {color:blue;
+    background-color: Beige ;
+    font-size:130%;
+  }
+       table, td, th {
+    border: 1px solid blue;
+    border-collapse: collapse;
+    
+}
+
+th {
+    background-color: blue;
+    color: white;
+}
+td {
+    padding: 5px;
+}
+tr:nth-child(even) {background: #33FFFF}
+tr:nth-child(odd) {background: #00CCFF}
+   </style>
+        <apex:dataTable value="{!Opportunities}" var="c" captionClass="table">     
+            <apex:column headerValue="Opportunity Name" >
+       <a href="https://ap2.salesforce.com/{!c.id}" id="theLink">{!c.name}</a>
+            </apex:column>
+           
+            <apex:column headerValue="Account" value="{!c.Accountid}"/>&nbsp;&nbsp;
+            <apex:column headerValue="Close" value="{!c.CloseDate}"/>&nbsp;&nbsp;
+            <apex:column headerValue="Stage" value="{!c.StageName}"/>
+        </apex:dataTable>
+ <p>    Total Records  {!Count} </p>
+
+</apex:component>

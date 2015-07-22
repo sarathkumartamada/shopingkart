@@ -1,0 +1,199 @@
+<apex:component allowDML="true" controller="outfit" selfClosing="true" layout="inline">
+
+<apex:attribute name="AccountId"
+        description="current user account id" type="id"
+        required="true" assignTo="{!accid}"/>
+        
+        
+<script>
+function centerModal() {
+    $(this).css('display', 'block');
+    var $dialog = $(this).find(".modal-dialog");
+    var offset = ($(window).height() - $dialog.height()) / 2;
+    // Center modal vertically in window
+    $dialog.css("margin-top", offset);
+}
+
+$('.modal').on('show.bs.modal', centerModal);
+$(window).on("resize", function () {
+    $('.modal:visible').each(centerModal);
+});
+window.onload=function()
+{
+ $('.panel-collapse.in')
+    .collapse('hide');
+$(".home").collapse('show');
+}
+
+</script>
+
+
+<div id="slide1">
+  <apex:pageBlock >
+  
+  
+              <div class="container-fluid ">
+                <ul class="nav nav-pills">
+                    <li class="active" ><a data-toggle="pill" href="#New">New Outfits</a></li>
+                    <li ><a data-toggle="pill" href="#History">History </a></li>
+                </ul>  
+                  <div class="tab-content">
+                    <div id="New" class="tab-pane fade in active">
+                      
+                          <div class="panel-group" id="accordion">  
+                              <apex:repeat value="{!Outfits}" var="outfit">
+                                <div class="panel panel-default">
+                                  <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                      <a data-toggle="collapse" data-parent="#accordion" href="#collapse{!outfit.id}"><apex:outputtext value="{!outfit.name}"/></a>
+                                    </h4>
+                                  </div>
+                                  <div id="collapse{!outfit.id}" class="panel-collapse collapse in">
+                                    <div class="panel-body">
+                                      <table id="example" class="table">
+                                            <thead>
+                                              <tr>
+                                                <th>select</th>
+                                                <th>Productname</th>
+                                                <th>Quantity</th>
+                                                <th>TotalPrice</th>
+                                                <th> </th>
+                                              </tr>
+                                            </thead>
+                                            
+                                          <tbody>
+                                        <apex:repeat value="{!outfit.Opportunity_Product__r}" var="pro">
+                                        <tr class="info">
+                                            <td>
+                                            <apex:commandlink action="{!updateoutfit}" value="Like">
+                                             <apex:param assignTo="{!result}" name="Like" value="Like"/>
+                                             <apex:param assignTo="{!outfitid}" name="outfitid" value="{!outfit.id}"/>
+                                            </apex:commandlink>
+                                            <apex:commandlink action="{!updateoutfit}" value="DisLike">
+                                             <apex:param assignTo="{!result}" name="Like" value="DisLike"/>
+                                              <apex:param assignTo="{!outfitid}" name="outfitid" value="{!outfit.id}"/>
+                                            </apex:commandlink>                                                            
+                                            <apex:commandlink action="{!updateoutfit}" value="send">
+                                             <apex:param assignTo="{!result}" name="Like" value="Send"/>
+                                              <apex:param assignTo="{!outfitid}" name="outfitid" value="{!outfit.id}"/>
+                                            </apex:commandlink>  
+                                            </td>
+                                            <td><apex:outputtext styleclass="form-group" value="{!pro.name}"/>{!pro.name}</td>
+                                            <td><apex:outputtext styleclass="form-group" value="{!pro.Quantity}"/></td>
+                                            <td><apex:outputtext styleclass="form-group" value="{!pro.TotalPrice}"/></td>
+                                            <td>                         
+                                            <apex:commandLink styleClass="btn btn-info" action="{!test}" oncomplete="$('#myModal').modal('show');" value="Preview" reRender="photo">
+                                             <apex:param assignTo="{!prid}" name="productid" value="{!pro.Product2Id}"/>
+                                             </apex:commandLink>
+                    
+                                              </td>
+                    
+                    
+                                        
+                                        </tr>
+                                        </apex:repeat>  
+                                        </tbody>     
+                                        </table>                        
+                                    </div>
+                                  </div>
+                                </div>
+                            
+                    
+                            </apex:repeat>
+                            
+                          </div>  
+                          
+                       </div>   
+                   <div id="History" class="tab-pane fade">    
+                          <div class="panel-group" id="accordion">  
+                              <apex:repeat value="{!OldOutfits}" var="outfit">
+                                <div class="panel panel-default">
+                                  <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                      <a data-toggle="collapse" data-parent="#accordion" href="#collapse{!outfit.id}"><apex:outputtext value="{!outfit.name}"/></a>
+                                    </h4>
+                                  </div>
+                                  <div id="collapse{!outfit.id}" class="panel-collapse collapse in">
+                                    <div class="panel-body">
+                                      <table id="example" class="table">
+                                            <thead>
+                                              <tr>
+                                                <th>select</th>
+                                                <th>Productname</th>
+                                                <th>Quantity</th>
+                                                <th>TotalPrice</th>
+                                                <th> </th>
+                                              </tr>
+                                            </thead>
+                                            
+                                          <tbody>
+                                        <apex:repeat value="{!outfit.Opportunity_Product__r}" var="pro">
+                                        <tr class="info">
+                                            <td>
+                                            <apex:commandlink styleClass="btn btn-info" action="{!updateoutfit}"  value="Like" ><style> .btn { position: static; }</style>
+                                             <apex:param assignTo="{!result}" name="Like" value="Like"/>
+                                             <apex:param assignTo="{!outfitid}" name="outfitid" value="{!outfit.id}"/>
+                                            </apex:commandlink>
+
+                                            <apex:commandlink styleClass="btn btn-warning" action="{!updateoutfit}" value="DisLike">
+                                             <apex:param assignTo="{!result}" name="Like" value="DisLike"/>
+                                             <apex:param assignTo="{!outfitid}" name="outfitid" value="{!outfit.id}"/>
+                                            </apex:commandlink>                                                            
+
+                                            </td>
+                                            <td><apex:outputtext styleclass="form-group" value="{!pro.name}"/>{!pro.name}</td>
+                                            <td><apex:outputtext styleclass="form-group" value="{!pro.Quantity}"/>{!pro.Quantity}</td>
+                                            <td><apex:outputtext styleclass="form-group" value="{!pro.TotalPrice}"/>{!pro.TotalPrice}</td>
+                                            <td>    
+                                         
+                                                               
+                                            <apex:commandLink styleClass="btn btn-info"  action="{!test}" oncomplete="$('#myModal').modal('show');" value="Preview" reRender="photo">
+                                             <apex:param assignTo="{!prid}" name="productid" value="{!pro.Product2Id}"/>
+                                             </apex:commandLink>
+                    
+                                              </td>
+                    
+                    
+                                        
+                                        </tr>
+                                        </apex:repeat>  
+                                        </tbody>     
+                                        </table>                        
+                                    </div>
+                                  </div>
+                                </div>
+                            
+                    
+                            </apex:repeat>
+                            
+                          </div>  
+                          
+                       </div>     
+                      </div>   
+                      </div>               
+                   <apex:actionFunction action="{!test}" name="preview" oncomplete="$('#myModal').modal('show');"/> 
+    <!--  <apex:actionFunction name="ola" action="{!test}" oncomplete="$('#myModal').modal('show');" reRender="photo"/>-->
+      <apex:outputPanel id="photo">
+        
+                        <div id="myModal" class="modal fade" tabindex="1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                          <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <apex:pageBlockSection id="productimage">
+                                            <apex:repeat value="{!photos}" var="photo" >
+                                                <apex:image url="{!URLFOR($Action.Attachment.Download, photo)}" width="300px" height="300px"/>
+                                            </apex:repeat>
+                                   </apex:pageBlockSection>
+                                </div>
+                                  <div class="modal-footer">
+                                   <a class="btn btn-primary" data-dismiss="modal" aria-hidden="true">close</a>
+                                  </div> 
+                            </div>
+                          </div>
+                          </div>
+        </apex:outputPanel>
+
+        
+  </apex:pageBlock>   
+</div>
+</apex:component>

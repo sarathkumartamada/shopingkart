@@ -1,0 +1,14 @@
+<messaging:emailTemplate subject="OpportunityDashBoard" recipientType="User" relatedToType="Opportunity">
+<messaging:htmlEmailBody >
+
+<p>Opportunities Closed Won during Past 7 days</p>
+<c:OpoportunityCloseWonWithInLastWeek />
+<p> Open opportunities if they have any open activities</p>
+<c:OpenOpportunitiesHasopenactivities />
+<p> Open opportunities with no activities.</p>
+<c:ClosedwonopportunitiesHasNoActivities />
+<p>Open Opportunities with all Closed activities</p>
+<c:OpenOpportunitieswithallClosedactivities />
+<p>-------------------------------</p>
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>
